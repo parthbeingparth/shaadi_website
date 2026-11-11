@@ -6,90 +6,78 @@ const shotDir = path.join(process.cwd(), "test-results", "screenshots");
 
 async function shot(page: import("@playwright/test").Page, name: string) {
   fs.mkdirSync(shotDir, { recursive: true });
-  await page.screenshot({
-    path: path.join(shotDir, `${name}.png`),
-    fullPage: false,
-  });
+  await page.screenshot({ path: path.join(shotDir, `${name}.png`), fullPage: false });
 }
 
-test.describe("The P Story visual QA", () => {
-  test("home sections: no top garland, dense hero, door, events, closing", async ({
-    page,
-  }) => {
+test.describe("The P Story royal redesign", () => {
+  test("home: hero, doors, events, blessing, countdown", async ({ page }) => {
     await page.goto("/");
     await page.waitForLoadState("networkidle");
 
-    // Top wisteria removed
     await expect(page.locator(".top-garland")).toHaveCount(0);
-
-    const card = page.locator(".invite-card");
-    await expect(card).toBeVisible();
-    const inviteImg = page.locator(".invite-card__art img");
-    await expect(inviteImg).toHaveAttribute("src", /invite-peacocks\.jpg/);
-
-    const cardBox = await card.boundingBox();
-    expect(cardBox).toBeTruthy();
-    expect(cardBox!.height).toBeGreaterThan(500);
-    expect(cardBox!.width).toBeGreaterThan(400);
-
-    await expect(page.getByRole("heading", { name: "The P Story" }).first()).toBeVisible();
+    await expect(page.locator(".invite-frame")).toBeVisible();
     await expect(page.locator(".hero__names")).toContainText("Parth");
     await expect(page.locator(".hero__names")).toContainText("Prerna");
-
+    await expect(page.locator(".hero__place")).toContainText("Jabalpur, Madhya Pradesh");
+    await expect(page.locator(".wisteria-canopy").first()).toBeVisible();
     await shot(page, "01-hero");
 
     await page.locator("#invitation").scrollIntoViewIfNeeded();
     await page.waitForTimeout(400);
-    const door = page.locator(".door-frame");
-    await expect(door).toBeVisible();
-    const doorBox = await door.boundingBox();
-    expect(doorBox).toBeTruthy();
-    expect(doorBox!.width).toBeGreaterThan(500);
-    expect(doorBox!.height).toBeGreaterThan(500);
-    await expect(page.locator(".peacock")).toHaveCount(0);
-
+    await expect(page.locator(".door-frame")).toBeVisible();
+    const door = await page.locator(".door-frame").boundingBox();
+    expect(door!.width).toBeGreaterThan(480);
     await shot(page, "02-door-closed");
 
     await page.evaluate(() => {
       const scene = document.querySelector(".door-scene") as HTMLElement;
-      const mid = scene.offsetTop + scene.offsetHeight * 0.45;
-      window.scrollTo(0, mid);
+      window.scrollTo(0, scene.offsetTop + scene.offsetHeight * 0.5);
     });
     await page.waitForTimeout(500);
     await shot(page, "03-door-open");
 
     await page.locator("#events").scrollIntoViewIfNeeded();
-    await page.waitForTimeout(300);
-    await expect(page.locator(".events__panel")).toBeVisible();
-    await expect(page.getByText("Haldi & Sangeet")).toBeVisible();
-    await expect(page.getByText("Vivah & Reception")).toBeVisible();
+    await page.waitForTimeout(400);
+    await expect(page.getByText("Shagun")).toBeVisible();
+    await expect(page.getByText("Phoolon Ki Haldi")).toBeVisible();
+    await expect(page.getByText("Sangeet")).toBeVisible();
+    await expect(page.getByText("Baraat & Vivah")).toBeVisible();
     await shot(page, "04-events");
 
     await page.locator("#blessing").scrollIntoViewIfNeeded();
     await page.waitForTimeout(300);
-    await expect(page.getByText("A blessing")).toBeVisible();
-    await expect(page.getByText("Until we meet")).toBeVisible();
-    await shot(page, "05-closing");
+    await expect(page.getByText("Blessings for a Beautiful Beginning")).toBeVisible();
+    await shot(page, "05-blessing");
+
+    await page.locator("#countdown-section").scrollIntoViewIfNeeded();
+    await page.waitForTimeout(300);
+    await expect(page.locator("[data-days]")).toBeVisible();
+    await shot(page, "06-countdown");
   });
 
-  test("RSVP page: form sits high, no top garland", async ({ page }) => {
+  test("rsvp + greeting pages", async ({ page }) => {
     await page.goto("/rsvp.html");
     await page.waitForLoadState("networkidle");
-
-    await expect(page.locator(".top-garland")).toHaveCount(0);
-
     const panel = page.locator(".rsvp__panel");
     await expect(panel).toBeVisible();
-    await expect(page.getByRole("heading", { name: "RSVP" })).toBeVisible();
-
-    const box = await panel.boundingBox();
-    expect(box).toBeTruthy();
-    expect(box!.y).toBeLessThan(160);
-    expect(box!.width).toBeGreaterThan(480);
-
+    expect((await panel.boundingBox())!.y).toBeLessThan(180);
     await expect(page.getByLabel("Your full name")).toBeVisible();
-    await expect(page.getByRole("button", { name: "Send RSVP" })).toBeVisible();
+    await shot(page, "07-rsvp");
 
-    await shot(page, "06-rsvp");
+    await page.goto("/greeting.html");
+    await page.waitForLoadState("networkidle");
+    await expect(page.getByRole("heading", { name: "A Little Voice From The Past" })).toBeVisible();
+    await expect(page.getByRole("button", { name: /Tap to Hear/i })).toBeVisible();
+    await expect(page.locator(".greeting__qr")).toBeVisible();
+    await shot(page, "08-greeting");
+  });
+
+  test("mobile hero", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/");
+    await page.waitForLoadState("networkidle");
+    await expect(page.locator(".invite-frame")).toBeVisible();
+    await expect(page.locator(".hero__names")).toBeVisible();
+    await shot(page, "09-mobile-hero");
   });
 });

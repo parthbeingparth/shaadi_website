@@ -1,38 +1,49 @@
-# The P Story — Parth & Prerna
+# The P Story — Royal Garden of Love
 
-Save-the-date site for **11 & 12 December**, with scenic palace / lake / resort backgrounds, scroll-moving peacocks, doors that open onto the venue view, and a Netlify Forms RSVP.
+Luxury wedding invitation for **Parth & Prerna** · **11 & 12 December 2026** · **Jabalpur, Madhya Pradesh**
+
+Live: [thepstory.netlify.app](https://thepstory.netlify.app)
 
 ## Pages
 
-| Path | Purpose |
-|------|---------|
-| `/` (`index.html`) | Invitation, doors, events, countdown |
-| `/rsvp.html` | Guest RSVP (plus-one, days, arrival / departure) |
-| `/rsvp-success.html` | Thank-you after submit |
+| URL | Purpose |
+|-----|---------|
+| `/` | Invitation, doors, celebrations, blessing, countdown |
+| `/rsvp.html` | Netlify Forms RSVP |
+| `/rsvp-success.html` | Thank-you after RSVP |
+| `/greeting.html` | Childhood audio greeting + print QR |
 
-## Local preview
+## Update wedding details
+
+Edit [`js/wedding-config.js`](js/wedding-config.js):
+
+- Couple names, brand, location
+- Countdown ISO datetime
+- Venue (`name`, `address`, `mapUrl`, or keep `label: "Venue details to follow"`)
+- Event list (Shagun, Phoolon Ki Haldi, Sangeet, Haldi, Baraat & Vivah)
+
+## Add childhood greeting audio
+
+1. Place an MP3 at **`assets/audio/childhood-greeting.mp3`**
+2. Deploy
+3. Test `/greeting.html` → “Tap to Hear My Message”
+4. Print QR from **`assets/qr/greeting-qr.png`** (points to `https://thepstory.netlify.app/greeting.html`)
+
+Browsers block unmuted autoplay — guests tap to play.
+
+## Local preview & tests
 
 ```bash
 npx --yes serve .
+npm run test:visual
 ```
 
 ## Netlify
 
-1. Connect the GitHub repo (or drag-drop the folder).
-2. **Publish directory:** `.`
-3. **Build command:** empty (or the echo in `netlify.toml`).
-4. After first deploy, open **Forms** in Netlify — submissions from `rsvp` appear there.
-5. Optional: Forms → form notifications → email alert on new RSVP.
+- Publish directory: `.`
+- No build command required (or leave empty)
+- Forms: confirm `rsvp` appears under Site → Forms after deploy
 
-### Swap backgrounds later
+## Design references
 
-Drop your photos into `images/` and keep these names (or update the `src` paths in HTML):
-
-- `hero-cinematic.jpg` — hero
-- `door-reveal-lake.jpg` — view behind the doors
-- `peacock-scroll.jpg` — peacocks in the UI
-- `palace-fort.jpg`, `resort.jpg`, `lake.jpg`, `lake-resort.jpg` — section backdrops
-
-## RSVP fields
-
-Name, email, phone, attending, plus-one (+ name), which event days, arrival date, departure date, notes.
+Visual direction lives in `design_references/` (royal garden / jharokha / event cards).

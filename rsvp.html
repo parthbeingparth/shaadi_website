@@ -3,62 +3,55 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="RSVP for The P Story — Parth & Prerna, 11 & 12 December." />
-    <title>RSVP — The P Story</title>
+    <title>RSVP | The P Story — Parth &amp; Prerna</title>
+    <meta name="description" content="RSVP for Parth &amp; Prerna’s wedding celebrations, 11 &amp; 12 December 2026 in Jabalpur." />
+    <meta property="og:title" content="RSVP | The P Story" />
+    <meta property="og:image" content="https://thepstory.netlify.app/images/og-share.jpg" />
+    <link rel="canonical" href="https://thepstory.netlify.app/rsvp.html" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/styles.css" />
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23C9A84C' d='M32 4c-2 10-10 16-18 20 8 2 14 8 18 18 4-10 10-16 18-18-8-4-16-10-18-20z'/%3E%3Ccircle cx='32' cy='28' r='4' fill='%230B5F6B'/%3E%3C/svg%3E" />
   </head>
   <body class="page-rsvp">
-    <div class="ambient" aria-hidden="true">
-      <div class="petal-drift" id="petal-drift"></div>
-    </div>
-
-    <header class="site-nav is-scrolled">
-      <a class="site-nav__brand" href="index.html">The P Story</a>
-      <nav class="site-nav__links" aria-label="Primary">
-        <a href="index.html#events">Events</a>
+    <div class="ambient" aria-hidden="true"><div class="petal-drift" id="petal-drift"></div></div>
+    <header class="site-nav is-scrolled" id="site-nav">
+      <a class="site-nav__brand" href="index.html">
+        <img src="images/ornaments/feather.svg" alt="" width="18" height="36" />
+        <span>The P Story</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav__links" id="primary-nav" aria-label="Primary">
         <a href="index.html#invitation">Invitation</a>
+        <a href="index.html#events">Celebrations</a>
+        <a href="greeting.html">Greeting</a>
         <a href="rsvp.html" class="site-nav__rsvp" aria-current="page">RSVP</a>
       </nav>
     </header>
 
     <main class="rsvp">
-      <div class="rsvp__bg" aria-hidden="true"></div>
+      <div class="rsvp__panel royal-frame">
+        <div class="wisteria-canopy" aria-hidden="true" style="height:110px">
+          <picture>
+            <source srcset="images/ornaments/wisteria-canopy.webp" type="image/webp" />
+            <img class="wisteria-canopy__img" src="images/ornaments/wisteria-canopy.png" alt="" width="1200" height="459" />
+          </picture>
+        </div>
+        <p class="section-eyebrow" style="text-align:center;margin-top:2.5rem">Kindly respond</p>
+        <h1 class="rsvp__title">Will You Join Our Celebration?</h1>
+        <p class="rsvp__lead">Parth &amp; Prerna · 11 &amp; 12 December 2026</p>
+        <p class="rsvp__note">Your presence will make our special days even more memorable.</p>
 
-      <div class="rsvp__panel">
-        <p class="section-eyebrow">Kindly respond</p>
-        <h1 class="rsvp__title">RSVP</h1>
-        <p class="rsvp__lead">
-          Parth &amp; Prerna · The P Story · 11 &amp; 12 December
-        </p>
-        <p class="rsvp__note">
-          Share your travel dates so we can arrange accommodations for you.
-        </p>
-
-        <form
-          class="rsvp-form"
-          name="rsvp"
-          method="POST"
-          action="/rsvp-success.html"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-        >
+        <form class="rsvp-form" name="rsvp" method="POST" action="/rsvp-success.html" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="rsvp" />
-          <p class="rsvp-form__honeypot" hidden>
-            <label>Don’t fill this out: <input name="bot-field" /></label>
-          </p>
+          <p class="rsvp-form__honeypot" hidden><label>Don’t fill this out: <input name="bot-field" /></label></p>
 
           <label class="field">
             <span class="field__label">Your full name</span>
             <input class="field__input" type="text" name="guest_name" required autocomplete="name" />
           </label>
-
           <div class="field-row">
             <label class="field">
               <span class="field__label">Email</span>
@@ -69,8 +62,7 @@
               <input class="field__input" type="tel" name="phone" autocomplete="tel" />
             </label>
           </div>
-
-          <fieldset class="field field--choice">
+          <fieldset class="field">
             <legend class="field__label">Will you attend?</legend>
             <div class="choice-row">
               <label class="choice"><input type="radio" name="attending" value="Yes" required /> Yes</label>
@@ -78,46 +70,40 @@
               <label class="choice"><input type="radio" name="attending" value="Maybe" /> Maybe</label>
             </div>
           </fieldset>
-
-          <fieldset class="field field--choice">
+          <fieldset class="field">
             <legend class="field__label">Bringing a plus one?</legend>
             <div class="choice-row">
               <label class="choice"><input type="radio" name="plus_one" value="Yes" required id="plus-yes" /> Yes</label>
               <label class="choice"><input type="radio" name="plus_one" value="No" id="plus-no" /> No</label>
             </div>
           </fieldset>
-
           <label class="field" id="plus-one-name-field" hidden>
             <span class="field__label">Plus one’s name</span>
             <input class="field__input" type="text" name="plus_one_name" />
           </label>
-
-          <fieldset class="field field--choice">
+          <fieldset class="field">
             <legend class="field__label">Which days will you join?</legend>
             <div class="choice-col">
-              <label class="choice"><input type="checkbox" name="events" value="11 December — Haldi & Sangeet" /> 11 December — Haldi &amp; Sangeet</label>
-              <label class="choice"><input type="checkbox" name="events" value="12 December — Vivah & Reception" /> 12 December — Vivah &amp; Reception</label>
+              <label class="choice"><input type="checkbox" name="events" value="11 December" /> 11 December</label>
+              <label class="choice"><input type="checkbox" name="events" value="12 December" /> 12 December</label>
               <label class="choice"><input type="checkbox" name="events" value="Both days" /> Both days</label>
             </div>
           </fieldset>
-
           <div class="field-row">
             <label class="field">
               <span class="field__label">Planning to arrive</span>
-              <input class="field__input" type="date" name="arrival_date" required />
+              <input class="field__input" type="date" name="arrival_date" />
             </label>
             <label class="field">
               <span class="field__label">Planning to depart</span>
-              <input class="field__input" type="date" name="departure_date" required />
+              <input class="field__input" type="date" name="departure_date" />
             </label>
           </div>
-
           <label class="field">
             <span class="field__label">Notes (dietary needs, travel help, etc.)</span>
-            <textarea class="field__input field__input--area" name="notes" rows="4"></textarea>
+            <textarea class="field__input field__input--area" name="notes" rows="3"></textarea>
           </label>
-
-          <button class="rsvp-form__submit" type="submit">Send RSVP</button>
+          <button class="wedding-button wedding-button--primary rsvp-form__submit" type="submit">Send Your RSVP</button>
         </form>
       </div>
     </main>
@@ -125,9 +111,10 @@
     <footer class="site-footer">
       <p class="site-footer__brand">The P Story</p>
       <p class="site-footer__names">Parth &amp; Prerna</p>
-      <p class="site-footer__dates">11 &amp; 12 December</p>
+      <p class="site-footer__dates">11 &amp; 12 December 2026</p>
     </footer>
 
+    <script src="js/wedding-config.js"></script>
     <script src="js/main.js"></script>
     <script>
       (() => {
@@ -136,10 +123,10 @@
         const field = document.getElementById("plus-one-name-field");
         const input = field?.querySelector("input");
         const sync = () => {
-          const show = yes?.checked;
+          const show = !!yes?.checked;
           if (!field) return;
           field.hidden = !show;
-          if (input) input.required = !!show;
+          if (input) input.required = show;
           if (!show && input) input.value = "";
         };
         yes?.addEventListener("change", sync);
