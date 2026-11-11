@@ -1,39 +1,38 @@
-# Mayura — Parth & Prerna
+# The P Story — Parth & Prerna
 
-Royal peacock save-the-date site for the wedding celebrations on **11 & 12 December**.
+Save-the-date site for **11 & 12 December**, with scenic palace / lake / resort backgrounds, scroll-moving peacocks, doors that open onto the venue view, and a Netlify Forms RSVP.
 
-**Theme:** Mayura (peacock) — teal, emerald, antique gold, Krishnaji blessings, ornate palace doors that open as you scroll.
+## Pages
+
+| Path | Purpose |
+|------|---------|
+| `/` (`index.html`) | Invitation, doors, events, countdown |
+| `/rsvp.html` | Guest RSVP (plus-one, days, arrival / departure) |
+| `/rsvp-success.html` | Thank-you after submit |
 
 ## Local preview
-
-Open `index.html` in a browser, or from this folder:
 
 ```bash
 npx --yes serve .
 ```
 
-## Deploy to Netlify
+## Netlify
 
-1. Push this repo to GitHub (or drag the folder into [Netlify Drop](https://app.netlify.com/drop)).
-2. In Netlify: **Add new site → Import from Git** → pick the repo.
-3. Build settings:
-   - **Build command:** leave empty (or use the one in `netlify.toml`)
-   - **Publish directory:** `.` (site root)
-4. Deploy. Custom domain optional under **Domain settings**.
+1. Connect the GitHub repo (or drag-drop the folder).
+2. **Publish directory:** `.`
+3. **Build command:** empty (or the echo in `netlify.toml`).
+4. After first deploy, open **Forms** in Netlify — submissions from `rsvp` appear there.
+5. Optional: Forms → form notifications → email alert on new RSVP.
 
-### Quick update later
+### Swap backgrounds later
 
-Edit copy in `index.html` (venues, times, event names), tweak colours in `css/styles.css`, push — Netlify redeploys automatically.
+Drop your photos into `images/` and keep these names (or update the `src` paths in HTML):
 
-## Customise
+- `hero-cinematic.jpg` — hero
+- `door-reveal-lake.jpg` — view behind the doors
+- `peacock-scroll.jpg` — peacocks in the UI
+- `palace-fort.jpg`, `resort.jpg`, `lake.jpg`, `lake-resort.jpg` — section backdrops
 
-| What | Where |
-|------|--------|
-| Couple names / dates | `index.html` hero + footer |
-| Event details & venues | `#events` section in `index.html` |
-| Countdown target | `WEDDING_DATE` in `js/main.js` |
-| Colours | CSS variables in `css/styles.css` `:root` |
+## RSVP fields
 
-## Stack
-
-Static HTML, CSS, and vanilla JS — no framework, no build step.
+Name, email, phone, attending, plus-one (+ name), which event days, arrival date, departure date, notes.
