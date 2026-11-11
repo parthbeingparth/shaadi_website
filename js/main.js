@@ -38,9 +38,38 @@
   window.addEventListener("scroll", onScrollNav, { passive: true });
 
   /* Venue labels */
+  const venueLabel =
+    cfg.venue?.label ||
+    cfg.venue?.name ||
+    "Venue details to follow";
+  const venueAddress = cfg.venue?.address || "";
+  const venueMapUrl = cfg.venue?.mapUrl || "";
+
   document.querySelectorAll("[data-venue-label]").forEach((el) => {
-    el.textContent = cfg.venue?.label || "Venue details to follow";
+    el.textContent = venueLabel;
   });
+
+  document.querySelectorAll("[data-venue-address]").forEach((el) => {
+    if (!venueAddress) {
+      el.hidden = true;
+      return;
+    }
+    el.hidden = false;
+    el.textContent = venueAddress;
+  });
+
+  document.querySelectorAll("[data-venue-map]").forEach((el) => {
+    if (!venueMapUrl) {
+      el.hidden = true;
+      return;
+    }
+    el.hidden = false;
+    el.setAttribute("href", venueMapUrl);
+  });
+
+  const venueLine = venueAddress
+    ? `${venueLabel}<br /><span class="event-card__venue-address">${venueAddress}</span>`
+    : venueLabel;
 
   /* Events from config */
   const eventsRoot = document.getElementById("events-root");
@@ -60,7 +89,13 @@
               <p class="event-card__time">${e.timeLabel}</p>
               <h4 class="event-card__name">${e.name}</h4>
               <p class="event-card__desc">${e.description}</p>
-              <p class="event-card__venue">${cfg.venue?.label || "Venue details to follow"}</p>
+              <p class="event-card__venue">${
+                e.venueLabel || venueLine
+              }${
+                venueMapUrl
+                  ? `<br /><a class="event-card__map" href="${venueMapUrl}" target="_blank" rel="noopener noreferrer">View on map</a>`
+                  : ""
+              }</p>
             </div>
           </article>`
           )

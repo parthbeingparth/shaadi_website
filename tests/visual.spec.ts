@@ -38,7 +38,8 @@ test.describe("The P Story royal redesign", () => {
 
     await page.locator("#events").scrollIntoViewIfNeeded();
     await page.waitForTimeout(400);
-    await expect(page.getByText("Shagun")).toBeVisible();
+    await expect(page.getByText("Lagoon")).toBeVisible();
+    await expect(page.getByText("Surya Resort").first()).toBeVisible();
     await expect(page.getByText("Phoolon Ki Haldi")).toBeVisible();
     await expect(page.getByText("Sangeet")).toBeVisible();
     await expect(page.getByText("Baraat & Vivah")).toBeVisible();

@@ -12,10 +12,11 @@ window.weddingConfig = {
   },
   countdown: "2026-12-11T10:00:00+05:30",
   venue: {
-    name: null,
-    address: null,
-    mapUrl: null,
-    label: "Venue details to follow",
+    name: "Surya Resort",
+    address:
+      "Siluwa Chowk, Rani Durgawati Samadhi Road, Near Smart Town, Siluwa, Jabalpur, Madhya Pradesh 483001",
+    mapUrl: "https://share.google/VxfPMRZiVxKg5nNvW",
+    label: "Surya Resort, Siluwa, Jabalpur",
   },
   greeting: {
     audioSrc: "assets/audio/childhood-greeting.mp3",
@@ -23,9 +24,9 @@ window.weddingConfig = {
   },
   events: [
     {
-      id: "shagun",
+      id: "lagoon",
       day: 1,
-      name: "Shagun",
+      name: "Lagoon",
       date: "2026-12-11",
       dateLabel: "Friday, 11 December 2026",
       timeLabel: "Morning",

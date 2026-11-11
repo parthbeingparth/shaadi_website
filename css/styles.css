@@ -446,10 +446,35 @@ a {
 }
 
 .hero__venue {
-  margin: 0 0 0.85rem;
-  font-size: 0.92rem;
+  margin: 0 0 0.2rem;
+  font-size: 0.95rem;
+  color: var(--royal-purple);
+  font-style: normal;
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+}
+
+.hero__venue-address {
+  margin: 0 0 0.35rem;
+  font-size: 0.88rem;
   color: var(--text-muted);
   font-style: italic;
+  line-height: 1.35;
+}
+
+.hero__map {
+  display: inline-block;
+  margin: 0 0 0.85rem;
+  font-family: var(--font-display);
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--antique-gold);
+  border-bottom: 1px solid rgba(188, 152, 93, 0.45);
+}
+
+.hero__map:hover {
+  color: var(--royal-purple);
 }
 
 .hero__actions {
@@ -858,6 +883,30 @@ a {
   font-size: 0.95rem;
   font-style: italic;
   color: var(--text-muted);
+}
+
+.event-card__venue-address {
+  display: inline-block;
+  margin-top: 0.2rem;
+  font-size: 0.88rem;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+.event-card__map {
+  display: inline-block;
+  margin-top: 0.35rem;
+  font-family: var(--font-display);
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-style: normal;
+  color: var(--antique-gold);
+  border-bottom: 1px solid rgba(188, 152, 93, 0.4);
+}
+
+.event-card__map:hover {
+  color: var(--royal-purple);
 }
 
 /* Blessing */

@@ -20,7 +20,8 @@ Edit [`js/wedding-config.js`](js/wedding-config.js):
 - Couple names, brand, location
 - Countdown ISO datetime
 - Venue (`name`, `address`, `mapUrl`, or keep `label: "Venue details to follow"`)
-- Event list (Shagun, Phoolon Ki Haldi, Sangeet, Haldi, Baraat & Vivah)
+- Event list (Lagoon, Phoolon Ki Haldi, Sangeet, Haldi, Baraat & Vivah)
+- Venue defaults to Surya Resort, Siluwa, Jabalpur for all celebrations
 
 ## Add childhood greeting audio
 
