@@ -57,6 +57,38 @@ a {
   text-decoration: none;
 }
 
+/* Top wisteria garland — decorative overlay */
+.top-garland {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 48;
+  height: clamp(140px, 32vw, 300px);
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.top-garland__img {
+  width: 100%;
+  height: 118%;
+  object-fit: cover;
+  object-position: top center;
+  mix-blend-mode: multiply;
+  transform-origin: top center;
+  animation: garlandSway 8s ease-in-out infinite;
+}
+
+@keyframes garlandSway {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1.02);
+  }
+  50% {
+    transform: translate3d(0, 4px, 0) scale(1.03);
+  }
+}
+
 /* Floating petals */
 .ambient {
   position: fixed;
@@ -102,14 +134,14 @@ a {
   justify-content: space-between;
   height: var(--nav-h);
   padding: 0 clamp(1.25rem, 4vw, 3rem);
-  background: linear-gradient(180deg, rgba(247, 241, 230, 0.92), transparent);
+  background: transparent;
   transition: background 0.35s ease, box-shadow 0.35s ease;
 }
 
 .site-nav.is-scrolled {
-  background: rgba(251, 247, 239, 0.94);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 1px 0 rgba(61, 36, 99, 0.08);
+  background: rgba(251, 247, 239, 0.72);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 1px 0 rgba(61, 36, 99, 0.06);
 }
 
 .site-nav__brand {
@@ -188,77 +220,18 @@ a {
   display: grid;
   grid-template-rows: auto 1fr auto;
   justify-items: center;
-  padding: calc(var(--nav-h) + 0.5rem) 1.25rem 4.5rem;
+  padding: calc(var(--nav-h) + clamp(4.5rem, 14vw, 8.5rem)) 1.25rem 4.5rem;
   text-align: center;
   overflow: hidden;
   background:
     linear-gradient(180deg, var(--paper), var(--cream) 55%, var(--cream-deep));
 }
 
-.hero__florals {
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 180px;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.vine {
-  position: absolute;
-  top: -10px;
-  width: 56px;
-  height: 150px;
-  border-radius: 40% 40% 60% 60%;
-  background:
-    radial-gradient(ellipse at 40% 20%, var(--blush) 0 18%, transparent 19%),
-    radial-gradient(ellipse at 60% 45%, var(--lilac-soft) 0 16%, transparent 17%),
-    radial-gradient(ellipse at 35% 70%, var(--blush) 0 14%, transparent 15%),
-    linear-gradient(180deg, var(--leaf), transparent 80%);
-  opacity: 0.75;
-  transform-origin: top center;
-  animation: vineSway 5.5s ease-in-out infinite;
-  filter: blur(0.2px);
-}
-
-.vine--l1 {
-  left: 6%;
-  animation-delay: 0s;
-}
-
-.vine--l2 {
-  left: 14%;
-  height: 120px;
-  width: 42px;
-  animation-delay: -1.4s;
-}
-
-.vine--r1 {
-  right: 6%;
-  animation-delay: -0.7s;
-}
-
-.vine--r2 {
-  right: 14%;
-  height: 120px;
-  width: 42px;
-  animation-delay: -2.1s;
-}
-
-@keyframes vineSway {
-  0%,
-  100% {
-    transform: rotate(-4deg);
-  }
-  50% {
-    transform: rotate(5deg);
-  }
-}
-
 .hero__content {
   position: relative;
   z-index: 3;
   max-width: 36rem;
-  padding-top: 1rem;
+  padding-top: 0.5rem;
   animation: riseIn 1.2s var(--ease-out) both;
 }
 
@@ -768,7 +741,7 @@ a {
 .blessing__motif {
   width: 56px;
   margin: 0 auto 1.25rem;
-  animation: vineSway 6s ease-in-out infinite;
+  animation: garlandSway 6s ease-in-out infinite;
 }
 
 .blessing__quote {
@@ -901,7 +874,7 @@ a {
 .rsvp {
   position: relative;
   min-height: 100svh;
-  padding: calc(var(--nav-h) + 2rem) 1.25rem 4rem;
+  padding: calc(var(--nav-h) + clamp(3.5rem, 12vw, 7rem)) 1.25rem 4rem;
   display: grid;
   place-items: start center;
 }
@@ -1087,7 +1060,7 @@ a {
   .hero__stage,
   .hero__art,
   .hero__scroll-line,
-  .vine,
+  .top-garland__img,
   .petal,
   .peacock,
   .blessing__motif,
