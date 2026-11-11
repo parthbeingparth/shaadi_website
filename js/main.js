@@ -5,7 +5,7 @@
   /* Floating petals */
   const drift = document.getElementById("petal-drift");
   if (drift && !reducedMotion) {
-    for (let i = 0; i < 14; i += 1) {
+    for (let i = 0; i < 12; i += 1) {
       const petal = document.createElement("span");
       petal.className = "petal";
       petal.style.left = `${Math.random() * 100}%`;
@@ -24,18 +24,6 @@
   };
   onScrollNav();
   window.addEventListener("scroll", onScrollNav, { passive: true });
-
-  /* Peacocks move gently with scroll */
-  const peacocks = [...document.querySelectorAll("[data-parallax]")];
-  const updatePeacocks = () => {
-    if (reducedMotion || !peacocks.length) return;
-    const y = window.scrollY;
-    peacocks.forEach((el) => {
-      const factor = Number(el.dataset.parallax) || 0.1;
-      const flip = el.classList.contains("peacock--left") ? "scaleX(-1) " : "";
-      el.style.transform = `${flip}translate3d(0, ${y * factor}px, 0)`;
-    });
-  };
 
   /* Doors open on scroll */
   const scene = document.querySelector(".door-scene");
@@ -68,13 +56,8 @@
     reveal.style.transform = `scale(${0.97 + Math.min(revealProgress, 1) * 0.03})`;
   };
 
-  const onScroll = () => {
-    updateDoors();
-    updatePeacocks();
-  };
-
-  onScroll();
-  window.addEventListener("scroll", onScroll, { passive: true });
+  updateDoors();
+  window.addEventListener("scroll", updateDoors, { passive: true });
   window.addEventListener("resize", updateDoors);
 
   /* Section reveals */
@@ -91,7 +74,7 @@
           }
         });
       },
-      { threshold: 0.18, rootMargin: "0px 0px -8% 0px" }
+      { threshold: 0.15, rootMargin: "0px 0px -6% 0px" }
     );
     revealEls.forEach((el) => io.observe(el));
   } else {

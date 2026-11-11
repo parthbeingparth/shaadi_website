@@ -18,6 +18,7 @@
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%237B4B9A' d='M32 4c-2 10-10 16-18 20 8 2 14 8 18 18 4-10 10-16 18-18-8-4-16-10-18-20z'/%3E%3Ccircle cx='32' cy='28' r='4' fill='%231A8A7A'/%3E%3C/svg%3E" />
   </head>
   <body>
+    <!-- Sole floral decoration -->
     <div class="top-garland" aria-hidden="true">
       <img
         class="top-garland__img"
@@ -43,31 +44,31 @@
     </header>
 
     <main id="top">
-      <!-- Light invitation hero -->
+      <!-- Dense invite card hero -->
       <section class="hero" aria-label="Save the date">
-        <div class="hero__content">
-          <p class="hero__eyebrow">|| Shri Ganeshaya Namah ||</p>
-          <h1 class="hero__brand">The P Story</h1>
-          <p class="hero__names">Parth <span class="amp">&amp;</span> Prerna</p>
-          <p class="hero__line">together with their families invite you to their wedding</p>
-          <p class="hero__dates">11 &amp; 12 December</p>
-          <p class="hero__where">Venue to be announced</p>
-          <div class="hero__actions">
-            <a class="hero__cta" href="#invitation">Open the invitation</a>
-            <a class="hero__cta hero__cta--ghost" href="rsvp.html">RSVP</a>
+        <div class="invite-card">
+          <div class="invite-card__art" aria-hidden="true">
+            <img
+              src="images/light-jharokha-peacocks.jpg"
+              alt=""
+              width="900"
+              height="1200"
+              fetchpriority="high"
+            />
           </div>
-        </div>
-
-        <div class="hero__stage" aria-hidden="true">
-          <img
-            class="hero__art"
-            src="images/light-jharokha-peacocks.jpg"
-            alt=""
-            width="900"
-            height="1200"
-            fetchpriority="high"
-          />
-          <div class="hero__art-mask"></div>
+          <div class="invite-card__veil"></div>
+          <div class="invite-card__copy">
+            <p class="hero__eyebrow">|| Shri Ganeshaya Namah ||</p>
+            <h1 class="hero__brand">The P Story</h1>
+            <p class="hero__names">Parth <span class="amp">&amp;</span> Prerna</p>
+            <p class="hero__line">together with their families invite you to their wedding</p>
+            <p class="hero__dates">11 &amp; 12 December</p>
+            <p class="hero__where">Venue to be announced</p>
+            <div class="hero__actions">
+              <a class="hero__cta" href="#invitation">Open the invitation</a>
+              <a class="hero__cta hero__cta--ghost" href="rsvp.html">RSVP</a>
+            </div>
+          </div>
         </div>
 
         <div class="hero__scroll" aria-hidden="true">
@@ -76,7 +77,7 @@
         </div>
       </section>
 
-      <!-- Jharokha doors open -->
+      <!-- Doors fill the viewport -->
       <section class="door-scene" id="invitation" aria-label="Invitation reveal">
         <div class="door-scene__sticky">
           <div class="door-frame">
@@ -104,76 +105,63 @@
               <a class="door-reveal__cta" href="rsvp.html">RSVP</a>
             </div>
           </div>
-
-          <img
-            class="peacock peacock--left"
-            src="images/light-jharokha-peacocks.jpg"
-            alt=""
-            data-parallax="-0.08"
-            aria-hidden="true"
-          />
-          <img
-            class="peacock peacock--right"
-            src="images/light-jharokha-peacocks.jpg"
-            alt=""
-            data-parallax="0.1"
-            aria-hidden="true"
-          />
         </div>
       </section>
 
-      <!-- Events -->
+      <!-- Packed events panel -->
       <section class="events" id="events">
-        <div class="events__header reveal-on-scroll">
-          <p class="section-eyebrow">The celebrations</p>
-          <h2 class="section-title">11 &amp; 12 December</h2>
-          <p class="section-lead">Two days of rituals, revelry, and reunion.</p>
-        </div>
+        <div class="events__panel reveal-on-scroll">
+          <div class="events__header">
+            <p class="section-eyebrow">The celebrations</p>
+            <h2 class="section-title">11 &amp; 12 December</h2>
+            <p class="section-lead">Two days of rituals, revelry, and reunion.</p>
+          </div>
 
-        <div class="events__grid">
-          <article class="event reveal-on-scroll">
-            <div class="event__day">Day One</div>
-            <h3 class="event__title">11 December</h3>
-            <p class="event__name">Haldi &amp; Sangeet</p>
-            <p class="event__desc">
-              Turmeric blessings at dusk, then an evening of music and dance.
-            </p>
-            <dl class="event__meta">
-              <div>
-                <dt>When</dt>
-                <dd>Evening onwards</dd>
-              </div>
-              <div>
-                <dt>Where</dt>
-                <dd>Venue to be announced</dd>
-              </div>
-            </dl>
-          </article>
+          <div class="events__grid">
+            <article class="event">
+              <div class="event__day">Day One</div>
+              <h3 class="event__title">11 December</h3>
+              <p class="event__name">Haldi &amp; Sangeet</p>
+              <p class="event__desc">
+                Turmeric blessings at dusk, then an evening of music and dance.
+              </p>
+              <dl class="event__meta">
+                <div>
+                  <dt>When</dt>
+                  <dd>Evening onwards</dd>
+                </div>
+                <div>
+                  <dt>Where</dt>
+                  <dd>Venue to be announced</dd>
+                </div>
+              </dl>
+            </article>
 
-          <article class="event reveal-on-scroll">
-            <div class="event__day">Day Two</div>
-            <h3 class="event__title">12 December</h3>
-            <p class="event__name">Vivah &amp; Reception</p>
-            <p class="event__desc">
-              The sacred pheras, followed by a feast to honour our union.
-            </p>
-            <dl class="event__meta">
-              <div>
-                <dt>When</dt>
-                <dd>Morning &amp; evening</dd>
-              </div>
-              <div>
-                <dt>Where</dt>
-                <dd>Venue to be announced</dd>
-              </div>
-            </dl>
-          </article>
+            <article class="event">
+              <div class="event__day">Day Two</div>
+              <h3 class="event__title">12 December</h3>
+              <p class="event__name">Vivah &amp; Reception</p>
+              <p class="event__desc">
+                The sacred pheras, followed by a feast to honour our union.
+              </p>
+              <dl class="event__meta">
+                <div>
+                  <dt>When</dt>
+                  <dd>Morning &amp; evening</dd>
+                </div>
+                <div>
+                  <dt>Where</dt>
+                  <dd>Venue to be announced</dd>
+                </div>
+              </dl>
+            </article>
+          </div>
         </div>
       </section>
 
-      <!-- Blessing -->
-      <section class="blessing" id="blessing">
-        <div class="blessing__inner reveal-on-scroll">
+      <!-- Blessing + countdown packed together -->
+      <section class="closing" id="blessing">
+        <div class="blessing reveal-on-scroll">
           <div class="blessing__motif" aria-hidden="true">
             <svg viewBox="0 0 120 160" fill="none">
               <path d="M60 8 C42 40 32 70 36 120 C48 95 55 70 60 45 C65 70 72 95 84 120 C88 70 78 40 60 8Z" fill="#1A8A7A" opacity="0.85"/>
@@ -191,32 +179,31 @@
             </p>
           </blockquote>
         </div>
-      </section>
 
-      <!-- Countdown -->
-      <section class="countdown reveal-on-scroll">
-        <p class="section-eyebrow">Mark your calendars</p>
-        <h2 class="section-title">Until we meet</h2>
-        <div class="countdown__timer" id="countdown" aria-live="polite">
-          <div class="countdown__unit">
-            <span class="countdown__num" data-days>00</span>
-            <span class="countdown__label">Days</span>
+        <div class="countdown reveal-on-scroll">
+          <p class="section-eyebrow">Mark your calendars</p>
+          <h2 class="section-title">Until we meet</h2>
+          <div class="countdown__timer" id="countdown" aria-live="polite">
+            <div class="countdown__unit">
+              <span class="countdown__num" data-days>00</span>
+              <span class="countdown__label">Days</span>
+            </div>
+            <div class="countdown__unit">
+              <span class="countdown__num" data-hours>00</span>
+              <span class="countdown__label">Hours</span>
+            </div>
+            <div class="countdown__unit">
+              <span class="countdown__num" data-mins>00</span>
+              <span class="countdown__label">Mins</span>
+            </div>
+            <div class="countdown__unit">
+              <span class="countdown__num" data-secs>00</span>
+              <span class="countdown__label">Secs</span>
+            </div>
           </div>
-          <div class="countdown__unit">
-            <span class="countdown__num" data-hours>00</span>
-            <span class="countdown__label">Hours</span>
-          </div>
-          <div class="countdown__unit">
-            <span class="countdown__num" data-mins>00</span>
-            <span class="countdown__label">Mins</span>
-          </div>
-          <div class="countdown__unit">
-            <span class="countdown__num" data-secs>00</span>
-            <span class="countdown__label">Secs</span>
-          </div>
+          <p class="countdown__hint">Tell us you’re coming — it helps us plan stays for everyone.</p>
+          <a class="countdown__ical" href="rsvp.html">RSVP now</a>
         </div>
-        <p class="countdown__hint">Tell us you’re coming — it helps us plan stays for everyone.</p>
-        <a class="countdown__ical" href="rsvp.html">RSVP now</a>
       </section>
     </main>
 
