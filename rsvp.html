@@ -15,6 +15,10 @@
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23C9A84C' d='M32 4c-2 10-10 16-18 20 8 2 14 8 18 18 4-10 10-16 18-18-8-4-16-10-18-20z'/%3E%3Ccircle cx='32' cy='28' r='4' fill='%230B5F6B'/%3E%3C/svg%3E" />
   </head>
   <body class="page-rsvp">
+    <div class="ambient" aria-hidden="true">
+      <div class="petal-drift" id="petal-drift"></div>
+    </div>
+
     <header class="site-nav is-scrolled">
       <a class="site-nav__brand" href="index.html">The P Story</a>
       <nav class="site-nav__links" aria-label="Primary">
@@ -25,10 +29,7 @@
     </header>
 
     <main class="rsvp">
-      <div class="rsvp__bg" aria-hidden="true">
-        <img src="images/gazebo-peacock-wide.jpg" alt="" />
-        <div class="rsvp__bg-veil"></div>
-      </div>
+      <div class="rsvp__bg" aria-hidden="true"></div>
 
       <div class="rsvp__panel">
         <p class="section-eyebrow">Kindly respond</p>
@@ -127,6 +128,7 @@
       <p class="site-footer__dates">11 &amp; 12 December</p>
     </footer>
 
+    <script src="js/main.js"></script>
     <script>
       (() => {
         const yes = document.getElementById("plus-yes");

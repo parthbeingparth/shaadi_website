@@ -15,11 +15,11 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/styles.css" />
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23C9A84C' d='M32 4c-2 10-10 16-18 20 8 2 14 8 18 18 4-10 10-16 18-18-8-4-16-10-18-20z'/%3E%3Ccircle cx='32' cy='28' r='4' fill='%230B5F6B'/%3E%3C/svg%3E" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%237B4B9A' d='M32 4c-2 10-10 16-18 20 8 2 14 8 18 18 4-10 10-16 18-18-8-4-16-10-18-20z'/%3E%3Ccircle cx='32' cy='28' r='4' fill='%231A8A7A'/%3E%3C/svg%3E" />
   </head>
   <body>
     <div class="ambient" aria-hidden="true">
-      <div class="feather-drift" id="feather-drift"></div>
+      <div class="petal-drift" id="petal-drift"></div>
     </div>
 
     <header class="site-nav">
@@ -33,30 +33,38 @@
     </header>
 
     <main id="top">
-      <!-- HERO: gazebo peacock (reference style) -->
+      <!-- Light invitation hero -->
       <section class="hero" aria-label="Save the date">
-        <div class="hero__media" aria-hidden="true">
-          <img
-            class="hero__photo"
-            src="images/gazebo-peacock-wide.jpg"
-            alt=""
-            width="1280"
-            height="720"
-            fetchpriority="high"
-          />
-          <div class="hero__veil"></div>
+        <div class="hero__florals" aria-hidden="true">
+          <span class="vine vine--l1"></span>
+          <span class="vine vine--l2"></span>
+          <span class="vine vine--r1"></span>
+          <span class="vine vine--r2"></span>
         </div>
 
         <div class="hero__content">
           <p class="hero__eyebrow">|| Shri Ganeshaya Namah ||</p>
           <h1 class="hero__brand">The P Story</h1>
           <p class="hero__names">Parth <span class="amp">&amp;</span> Prerna</p>
-          <p class="hero__line">together with their families</p>
-          <p class="hero__dates">11<span class="thin">&amp;</span>12 December</p>
+          <p class="hero__line">together with their families invite you to their wedding</p>
+          <p class="hero__dates">11 &amp; 12 December</p>
+          <p class="hero__where">Venue to be announced</p>
           <div class="hero__actions">
             <a class="hero__cta" href="#invitation">Open the invitation</a>
             <a class="hero__cta hero__cta--ghost" href="rsvp.html">RSVP</a>
           </div>
+        </div>
+
+        <div class="hero__stage" aria-hidden="true">
+          <img
+            class="hero__art"
+            src="images/light-jharokha-peacocks.jpg"
+            alt=""
+            width="900"
+            height="1200"
+            fetchpriority="high"
+          />
+          <div class="hero__art-mask"></div>
         </div>
 
         <div class="hero__scroll" aria-hidden="true">
@@ -65,90 +73,54 @@
         </div>
       </section>
 
-      <!-- JHAROKHA DOORS → lake / resort -->
+      <!-- Jharokha doors open -->
       <section class="door-scene" id="invitation" aria-label="Invitation reveal">
         <div class="door-scene__sticky">
-          <div class="door-frame door-frame--jharokha">
-            <div class="door-frame__florals" aria-hidden="true"></div>
-
+          <div class="door-frame">
             <div class="doors" data-doors>
               <div class="door door--left" data-door-left>
-                <div class="door__panel door__panel--carved">
+                <div class="door__panel">
                   <div class="door__knob door__knob--right"></div>
                 </div>
               </div>
               <div class="door door--right" data-door-right>
-                <div class="door__panel door__panel--carved">
+                <div class="door__panel">
                   <div class="door__knob door__knob--left"></div>
                 </div>
               </div>
             </div>
 
             <div class="door-reveal" data-door-reveal>
-              <img
-                class="door-reveal__photo"
-                src="images/door-reveal-lake.jpg"
-                alt=""
-                aria-hidden="true"
-              />
-              <div class="door-reveal__veil"></div>
-              <div class="door-reveal__copy">
-                <p class="door-reveal__eyebrow">With the blessings of elders &amp; Shri Krishnaji</p>
-                <h2 class="door-reveal__title">You are invited</h2>
-                <p class="door-reveal__text">
-                  Celebrate with us by the water, under palace light —
-                  peacocks, music, and The P Story.
-                </p>
-                <p class="door-reveal__names">Parth &amp; Prerna</p>
-              </div>
+              <p class="door-reveal__eyebrow">With the blessings of elders &amp; Shri Krishnaji</p>
+              <h2 class="door-reveal__title">You are invited</h2>
+              <p class="door-reveal__text">
+                Join us for two days of colour, music, and celebration —
+                The P Story begins.
+              </p>
+              <p class="door-reveal__names">Parth &amp; Prerna</p>
+              <a class="door-reveal__cta" href="rsvp.html">RSVP</a>
             </div>
           </div>
 
           <img
-            class="peacock peacock--door-left"
-            src="images/peacock-scroll.jpg"
+            class="peacock peacock--left"
+            src="images/light-jharokha-peacocks.jpg"
             alt=""
-            data-parallax="-0.12"
+            data-parallax="-0.08"
             aria-hidden="true"
           />
           <img
-            class="peacock peacock--door-right"
-            src="images/peacock-scroll.jpg"
+            class="peacock peacock--right"
+            src="images/light-jharokha-peacocks.jpg"
             alt=""
-            data-parallax="0.14"
+            data-parallax="0.1"
             aria-hidden="true"
           />
         </div>
       </section>
 
-      <!-- INVITE CARD (jharokha + peacocks reference layout) -->
-      <section class="invite-card" id="story">
-        <div class="invite-card__frame reveal-on-scroll">
-          <div class="invite-card__art" aria-hidden="true">
-            <img src="images/jharokha-peacocks.jpg" alt="" />
-            <div class="invite-card__art-veil"></div>
-          </div>
-          <div class="invite-card__copy">
-            <p class="invite-card__ganesh">|| Shri Ganeshaya Namah ||</p>
-            <p class="invite-card__brand">The P Story</p>
-            <h2 class="invite-card__names">Parth <span>&amp;</span> Prerna</h2>
-            <p class="invite-card__invite">
-              together with their families invite you to their wedding celebrations
-            </p>
-            <p class="invite-card__when">11 &amp; 12 December</p>
-            <p class="invite-card__where">Venue to be announced</p>
-            <a class="invite-card__cta" href="rsvp.html">RSVP</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- EVENTS -->
+      <!-- Events -->
       <section class="events" id="events">
-        <div class="events__bg" aria-hidden="true">
-          <img src="images/resort.jpg" alt="" />
-          <div class="events__bg-veil"></div>
-        </div>
-
         <div class="events__header reveal-on-scroll">
           <p class="section-eyebrow">The celebrations</p>
           <h2 class="section-title">11 &amp; 12 December</h2>
@@ -196,20 +168,16 @@
         </div>
       </section>
 
-      <!-- BLESSING -->
+      <!-- Blessing -->
       <section class="blessing" id="blessing">
         <div class="blessing__inner reveal-on-scroll">
           <div class="blessing__motif" aria-hidden="true">
-            <svg viewBox="0 0 240 160" fill="none">
-              <rect x="20" y="72" width="200" height="10" rx="5" fill="#C9A84C"/>
-              <circle cx="50" cy="77" r="3" fill="#06283A"/>
-              <circle cx="80" cy="77" r="3" fill="#06283A"/>
-              <circle cx="110" cy="77" r="3" fill="#06283A"/>
-              <circle cx="140" cy="77" r="3" fill="#06283A"/>
-              <circle cx="170" cy="77" r="3" fill="#06283A"/>
-              <path d="M120 20 C105 45 100 65 110 90 C115 70 120 55 120 40 C120 55 125 70 130 90 C140 65 135 45 120 20Z" fill="#0B5F6B"/>
-              <ellipse cx="120" cy="42" rx="8" ry="12" fill="#C9A84C"/>
-              <circle cx="120" cy="42" r="3" fill="#06283A"/>
+            <svg viewBox="0 0 120 160" fill="none">
+              <path d="M60 8 C42 40 32 70 36 120 C48 95 55 70 60 45 C65 70 72 95 84 120 C88 70 78 40 60 8Z" fill="#1A8A7A" opacity="0.85"/>
+              <ellipse cx="60" cy="48" rx="12" ry="18" fill="#C9A84C"/>
+              <ellipse cx="60" cy="48" rx="5" ry="9" fill="#3D2463"/>
+              <circle cx="60" cy="48" r="2.5" fill="#C9A84C"/>
+              <path d="M60 66 L60 150" stroke="#7B4B9A" stroke-width="1.5" opacity="0.5"/>
             </svg>
           </div>
           <p class="section-eyebrow">A blessing</p>
@@ -222,12 +190,8 @@
         </div>
       </section>
 
-      <!-- COUNTDOWN + RSVP -->
+      <!-- Countdown -->
       <section class="countdown reveal-on-scroll">
-        <div class="countdown__bg" aria-hidden="true">
-          <img src="images/lake.jpg" alt="" />
-          <div class="countdown__bg-veil"></div>
-        </div>
         <p class="section-eyebrow">Mark your calendars</p>
         <h2 class="section-title">Until we meet</h2>
         <div class="countdown__timer" id="countdown" aria-live="polite">
@@ -257,7 +221,7 @@
       <p class="site-footer__brand">The P Story</p>
       <p class="site-footer__names">Parth &amp; Prerna</p>
       <p class="site-footer__dates">11 &amp; 12 December</p>
-      <p class="site-footer__copy"><a href="rsvp.html">RSVP</a> · With love</p>
+      <p class="site-footer__copy"><a href="rsvp.html">RSVP</a> · Warm regards</p>
     </footer>
 
     <form name="rsvp" netlify netlify-honeypot="bot-field" hidden>

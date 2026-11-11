@@ -2,17 +2,17 @@
   const WEDDING_DATE = new Date("2026-12-11T10:00:00+05:30");
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* Floating feather particles */
-  const drift = document.getElementById("feather-drift");
+  /* Floating petals */
+  const drift = document.getElementById("petal-drift");
   if (drift && !reducedMotion) {
-    for (let i = 0; i < 10; i += 1) {
-      const feather = document.createElement("span");
-      feather.className = "feather-particle";
-      feather.style.left = `${Math.random() * 100}%`;
-      feather.style.animationDuration = `${12 + Math.random() * 16}s`;
-      feather.style.animationDelay = `${Math.random() * 10}s`;
-      feather.style.transform = `scale(${0.5 + Math.random() * 0.9})`;
-      drift.appendChild(feather);
+    for (let i = 0; i < 14; i += 1) {
+      const petal = document.createElement("span");
+      petal.className = "petal";
+      petal.style.left = `${Math.random() * 100}%`;
+      petal.style.animationDuration = `${10 + Math.random() * 14}s`;
+      petal.style.animationDelay = `${Math.random() * 8}s`;
+      petal.style.transform = `scale(${0.55 + Math.random()})`;
+      drift.appendChild(petal);
     }
   }
 
@@ -20,24 +20,24 @@
   const nav = document.querySelector(".site-nav");
   const onScrollNav = () => {
     if (!nav) return;
-    nav.classList.toggle("is-scrolled", window.scrollY > 40);
+    nav.classList.toggle("is-scrolled", window.scrollY > 24);
   };
   onScrollNav();
   window.addEventListener("scroll", onScrollNav, { passive: true });
 
-  /* Peacocks move with scroll */
+  /* Peacocks move gently with scroll */
   const peacocks = [...document.querySelectorAll("[data-parallax]")];
   const updatePeacocks = () => {
     if (reducedMotion || !peacocks.length) return;
     const y = window.scrollY;
     peacocks.forEach((el) => {
-      const factor = Number(el.dataset.parallax) || 0.15;
-      const flip = el.classList.contains("peacock--door-left") ? "scaleX(-1) " : "";
+      const factor = Number(el.dataset.parallax) || 0.1;
+      const flip = el.classList.contains("peacock--left") ? "scaleX(-1) " : "";
       el.style.transform = `${flip}translate3d(0, ${y * factor}px, 0)`;
     });
   };
 
-  /* Door opening → lake / resort reveal */
+  /* Doors open on scroll */
   const scene = document.querySelector(".door-scene");
   const doorLeft = document.querySelector("[data-door-left]");
   const doorRight = document.querySelector("[data-door-right]");
@@ -47,8 +47,8 @@
     if (!scene || !doorLeft || !doorRight || !reveal) return;
 
     if (reducedMotion) {
-      doorLeft.style.transform = "rotateY(-82deg)";
-      doorRight.style.transform = "rotateY(82deg)";
+      doorLeft.style.transform = "rotateY(-78deg)";
+      doorRight.style.transform = "rotateY(78deg)";
       reveal.style.opacity = "1";
       reveal.style.transform = "scale(1)";
       return;
@@ -59,13 +59,13 @@
     const scrolled = Math.min(Math.max(-rect.top, 0), total);
     const progress = total > 0 ? scrolled / total : 1;
 
-    const angle = progress * 82;
+    const angle = progress * 78;
     doorLeft.style.transform = `rotateY(${-angle}deg)`;
     doorRight.style.transform = `rotateY(${angle}deg)`;
 
     const revealProgress = Math.max(0, (progress - 0.12) / 0.55);
     reveal.style.opacity = String(Math.min(revealProgress, 1));
-    reveal.style.transform = `scale(${0.98 + Math.min(revealProgress, 1) * 0.02})`;
+    reveal.style.transform = `scale(${0.97 + Math.min(revealProgress, 1) * 0.03})`;
   };
 
   const onScroll = () => {
