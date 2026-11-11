@@ -54,40 +54,6 @@ a {
   text-decoration: none;
 }
 
-/* Top wisteria — sole floral decoration (transparent PNG, full-bleed) */
-.top-garland {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  z-index: 48;
-  height: clamp(100px, 20vw, 200px);
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.top-garland__img {
-  display: block;
-  width: 100%;
-  max-width: none;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  transform-origin: top center;
-  animation: garlandSway 8s ease-in-out infinite;
-}
-
-@keyframes garlandSway {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1.02);
-  }
-  50% {
-    transform: translate3d(0, 3px, 0) scale(1.03);
-  }
-}
-
 /* Petals */
 .ambient {
   position: fixed;
@@ -218,7 +184,7 @@ a {
   min-height: 100svh;
   display: grid;
   place-items: center;
-  padding: calc(var(--nav-h) + clamp(2.5rem, 8vw, 4.5rem)) 1rem 2.5rem;
+  padding: calc(var(--nav-h) + 1rem) 1rem 2.5rem;
   background:
     radial-gradient(ellipse at 50% 20%, rgba(167, 123, 192, 0.1), transparent 50%),
     linear-gradient(180deg, var(--paper), var(--cream));
@@ -706,7 +672,6 @@ a {
 .blessing__motif {
   width: 44px;
   margin: 0 auto 0.85rem;
-  animation: garlandSway 6s ease-in-out infinite;
 }
 
 .blessing__quote {
@@ -836,14 +801,10 @@ a {
   background: var(--cream);
 }
 
-.page-rsvp .top-garland {
-  height: clamp(72px, 14vw, 130px);
-}
-
 .rsvp {
   position: relative;
   min-height: 100svh;
-  padding: calc(var(--nav-h) + 0.75rem) 1rem 2rem;
+  padding: calc(var(--nav-h) + 1rem) 1rem 2rem;
   display: grid;
   align-content: start;
   justify-items: center;
@@ -1026,9 +987,7 @@ a {
 
   .invite-card,
   .hero__scroll-line,
-  .top-garland__img,
   .petal,
-  .blessing__motif,
   .reveal-on-scroll {
     animation: none !important;
     transition: none !important;
