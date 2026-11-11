@@ -1,0 +1,12 @@
+{
+  "name": "the-p-story",
+  "private": true,
+  "scripts": {
+    "serve": "npx --yes serve . -p 4173",
+    "test:visual": "playwright test",
+    "test:visual:ui": "playwright test --ui"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0"
+  }
+}
