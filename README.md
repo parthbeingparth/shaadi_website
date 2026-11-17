@@ -1,6 +1,6 @@
 # The P Story — Royal Garden of Love
 
-Luxury wedding invitation for **Parth & Prerna** · **11 & 12 December 2026** · **Jabalpur, Madhya Pradesh**
+Luxury wedding invitation for **Prerna & Parth** · **11 & 12 December 2026** · **Jabalpur, Madhya Pradesh**
 
 Live: [thepstory.netlify.app](https://thepstory.netlify.app)
 

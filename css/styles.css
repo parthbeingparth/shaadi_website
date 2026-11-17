@@ -407,13 +407,33 @@ a {
   line-height: 1.4;
 }
 
-.hero__parents {
-  margin: 0 0 0.75rem;
+.hero__blessing-line strong,
+.hero__invite strong {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-style: normal;
+}
+
+.hero__invite--parents {
+  margin-top: 0.15rem;
+  margin-bottom: 0.85rem;
+}
+
+.hero__programme-link {
+  display: inline-block;
+  margin: 0 0 0.35rem;
   font-family: var(--font-display);
-  font-size: 0.62rem;
-  letter-spacing: 0.08em;
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--antique-gold);
+  color: var(--royal-purple);
+  border-bottom: 1px solid rgba(98, 62, 118, 0.35);
+  padding-bottom: 0.15rem;
+}
+
+.hero__programme-link:hover {
+  color: var(--deep-purple);
+  border-bottom-color: var(--antique-gold);
 }
 
 .gold-line {
@@ -1096,72 +1116,170 @@ a {
 .page-landing .landing {
   position: relative;
   min-height: 100svh;
-  padding: calc(var(--nav-h) + 1rem) 1rem 2.5rem;
+  padding: calc(var(--nav-h) + 0.75rem) 0.85rem 2rem;
   display: grid;
   justify-items: center;
   align-content: start;
 }
 
+.page-landing {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(227, 212, 239, 0.4), transparent 45%),
+    var(--warm-cream);
+}
+
 .landing__card {
   position: relative;
-  width: min(100%, 560px);
-  padding: clamp(4.25rem, 11vw, 5.25rem) clamp(1.25rem, 3vw, 2rem) clamp(1.75rem, 4vw, 2.5rem);
+  width: min(100%, 420px);
   text-align: center;
   overflow: hidden;
+  border: 1px solid rgba(188, 152, 93, 0.45);
+  box-shadow: 0 18px 50px rgba(77, 53, 88, 0.1);
+  background: var(--paper);
+}
+
+.landing__unlock {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 1.5rem;
+  border: 0;
+  cursor: pointer;
+  background: rgba(255, 249, 239, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: landing-unlock-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes landing-unlock-pulse {
+  0%,
+  100% {
+    background: rgba(255, 249, 239, 0.92);
+  }
+  50% {
+    background: rgba(255, 249, 239, 0.98);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing__unlock {
+    animation: none;
+  }
+}
+
+.landing__unlock.is-visible,
+.landing__unlock:not([hidden]) {
+  display: flex;
+}
+
+.landing__unlock[hidden] {
+  display: none !important;
+}
+
+.landing__unlock-eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--antique-gold);
+}
+
+.landing__unlock-title {
+  font-family: var(--font-script);
+  font-size: clamp(1.8rem, 7vw, 2.3rem);
+  color: var(--deep-purple);
+  line-height: 1.15;
+}
+
+.landing__canopy {
+  position: relative;
+  width: 100%;
+  height: 110px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.landing__canopy img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  mix-blend-mode: multiply;
+}
+
+.landing__body {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background:
-    radial-gradient(ellipse at 50% 8%, rgba(227, 212, 239, 0.3), transparent 45%),
-    var(--paper);
-}
-
-.landing__card > * {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-}
-
-.landing__card .wisteria-canopy {
-  z-index: 0;
-  width: auto;
+  padding: 0.35rem 1.15rem 1.6rem;
 }
 
 .landing__title {
-  margin: 0 0 0.85rem;
+  margin: 0 0 0.9rem;
+  max-width: 16rem;
   font-family: var(--font-display);
-  font-size: clamp(1.45rem, 4.2vw, 2rem);
+  font-size: clamp(1.2rem, 5vw, 1.45rem);
+  font-weight: 600;
   color: var(--deep-purple);
-  line-height: 1.25;
+  line-height: 1.35;
+  letter-spacing: 0.04em;
 }
 
 .landing__player {
   margin: 0 auto 1rem;
-  max-width: 22rem;
   width: 100%;
-  padding: 0.75rem 0.9rem;
-  border: 1px solid rgba(188, 152, 93, 0.35);
-  background: rgba(255, 251, 240, 0.85);
+  max-width: 16rem;
 }
 
 .landing__player audio {
-  display: block;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.landing__play {
   width: 100%;
+  padding: 0.85rem 1.1rem;
+  border: 1px solid var(--antique-gold);
+  background: transparent;
+  color: var(--royal-purple);
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.landing__play:hover,
+.landing__play.is-playing {
+  background: linear-gradient(135deg, var(--royal-purple), var(--deep-purple));
+  color: #fff;
 }
 
 .landing__portrait {
   display: block;
-  margin: 0.25rem auto 1rem;
-  width: min(58vw, 240px);
-  max-width: 240px;
+  margin: 0.15rem auto 0.85rem;
+  width: min(52vw, 200px);
+  max-width: 200px;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   overflow: hidden;
-  border: 2px solid rgba(188, 152, 93, 0.75);
+  border: 1.5px solid rgba(188, 152, 93, 0.75);
   box-shadow:
-    0 0 0 6px rgba(255, 249, 239, 0.95),
-    0 0 0 7px rgba(188, 152, 93, 0.35),
-    0 16px 36px rgba(77, 53, 88, 0.14);
+    0 0 0 5px rgba(255, 249, 239, 0.98),
+    0 0 0 6px rgba(188, 152, 93, 0.3),
+    0 12px 28px rgba(77, 53, 88, 0.12);
   background: var(--warm-cream);
 }
 
@@ -1179,28 +1297,49 @@ a {
   object-position: center 12%;
 }
 
-.landing__card > .ornamental-divider {
-  width: min(220px, 70%);
-  margin: 0.15rem auto 0.85rem;
+.landing__body > .ornamental-divider {
+  width: min(180px, 65%);
+  margin: 0.1rem auto 0.75rem;
 }
 
 .landing__cta {
   margin-top: 0;
   padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
-.landing__cta-title {
-  margin: 0 0 0.45rem;
+.landing__save-date {
+  margin: 0 0 0.3rem;
   font-family: var(--font-display);
-  font-size: clamp(1.35rem, 3.5vw, 1.75rem);
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--antique-gold);
+}
+
+.landing__date {
+  margin: 0 0 0.3rem;
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 3.5vw, 1.15rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--deep-purple);
 }
 
-.landing__cta-copy {
-  margin: 0 auto 1.1rem;
-  max-width: 20rem;
-  font-style: italic;
-  color: var(--text-muted);
+.landing__tagline {
+  margin: 0 0 1rem;
+  font-family: var(--font-script);
+  font-size: clamp(1.3rem, 4vw, 1.55rem);
+  color: var(--royal-purple);
+  line-height: 1.2;
+}
+
+.landing__cta .wedding-button {
+  width: 100%;
+  max-width: 16rem;
 }
 
 .rsvp__panel,
@@ -1388,50 +1527,30 @@ a {
 
 @media (max-width: 760px) {
   .page-landing .landing {
-    padding: calc(var(--nav-h) + 0.55rem) 0.7rem 1.5rem;
+    padding: calc(var(--nav-h) + 0.45rem) 0.65rem 1.35rem;
   }
 
-  .landing__card {
-    width: min(100%, 420px);
-    padding: 3.6rem 1rem 1.35rem;
+  .landing__canopy {
+    height: 96px;
+  }
+
+  .landing__body {
+    padding: 0.2rem 1rem 1.35rem;
   }
 
   .landing__title {
-    font-size: clamp(1.28rem, 5.6vw, 1.55rem);
-    margin-bottom: 0.7rem;
-    letter-spacing: 0.02em;
-  }
-
-  .landing__player {
+    font-size: 1.22rem;
     margin-bottom: 0.75rem;
-    padding: 0.55rem 0.65rem;
-    max-width: 100%;
   }
 
   .landing__portrait {
-    width: min(46vw, 190px);
-    max-width: 190px;
-    margin: 0.15rem auto 0.7rem;
+    width: min(46vw, 176px);
+    max-width: 176px;
   }
 
-  .landing__card > .ornamental-divider {
-    margin: 0.1rem auto 0.55rem;
-  }
-
-  .landing__cta-title {
+  .landing__tagline {
     font-size: 1.35rem;
-    margin-bottom: 0.3rem;
-  }
-
-  .landing__cta-copy {
-    margin: 0 auto 0.85rem;
-    font-size: 1rem;
-  }
-
-  .landing__cta .wedding-button {
-    width: 100%;
-    max-width: 18rem;
-    padding: 0.95rem 1.2rem;
+    margin-bottom: 0.85rem;
   }
 
   .hero {
@@ -1489,12 +1608,6 @@ a {
   .hero__names {
     font-size: clamp(2.55rem, 13vw, 3.2rem);
     margin: 0.4rem 0 0.25rem;
-  }
-
-  .hero__parents {
-    font-size: 0.58rem;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.55rem;
   }
 
   .hero__dates {
@@ -1567,22 +1680,21 @@ a {
 }
 
 @media (max-width: 380px) {
-  .landing__card {
-    padding: 3.25rem 0.85rem 1.15rem;
+  .landing__canopy {
+    height: 84px;
   }
 
   .landing__title {
-    font-size: 1.15rem;
+    font-size: 1.12rem;
   }
 
   .landing__portrait {
-    width: min(48vw, 150px);
+    width: min(44vw, 150px);
     max-width: 150px;
-    margin-bottom: 0.45rem;
   }
 
-  .landing__cta-copy {
-    margin-bottom: 0.65rem;
+  .landing__tagline {
+    margin-bottom: 0.7rem;
   }
 
   .hero__invocations {
@@ -1592,11 +1704,6 @@ a {
   .hero__blessing-line,
   .hero__invite {
     font-size: 0.98rem;
-  }
-
-  .hero__parents {
-    color: var(--royal-purple);
-    opacity: 0.85;
   }
 
   .hero__map {

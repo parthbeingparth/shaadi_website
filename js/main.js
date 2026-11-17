@@ -229,24 +229,154 @@
     });
   }
 
-  /* Landing — Idha invite autoplay */
+  /* Landing — Idha invite
+     Browsers block unmuted autoplay. One user tap starts playback reliably
+     (especially iOS Safari / in-app browsers). */
   const idhaAudio = document.getElementById("idha-audio");
-  if (idhaAudio) {
-    const tryPlay = () => idhaAudio.play().catch(() => false);
+  const idhaPlay = document.getElementById("idha-play");
+  const idhaUnlock = document.getElementById("idha-unlock");
+  if (idhaAudio && idhaPlay) {
+    const audioSrc =
+      (window.weddingConfig && window.weddingConfig.landing && window.weddingConfig.landing.audioSrc) ||
+      "/assets/audio/idha-invite.m4a";
 
-    const unlockOnGesture = () => {
-      tryPlay();
-      window.removeEventListener("pointerdown", unlockOnGesture);
-      window.removeEventListener("touchstart", unlockOnGesture);
-      window.removeEventListener("keydown", unlockOnGesture);
+    if (idhaAudio.getAttribute("src") !== audioSrc) {
+      idhaAudio.src = audioSrc;
+    }
+    idhaAudio.setAttribute("playsinline", "");
+    idhaAudio.setAttribute("webkit-playsinline", "");
+    idhaAudio.preload = "auto";
+    idhaAudio.muted = false;
+    idhaAudio.volume = 1;
+
+    let unlocked = false;
+
+    const setPlaying = (playing) => {
+      idhaPlay.classList.toggle("is-playing", playing);
+      idhaPlay.textContent = playing ? "Playing…" : "Play Message";
     };
 
-    tryPlay().then((started) => {
-      if (started === false || idhaAudio.paused) {
-        window.addEventListener("pointerdown", unlockOnGesture, { once: true });
-        window.addEventListener("touchstart", unlockOnGesture, { once: true });
-        window.addEventListener("keydown", unlockOnGesture, { once: true });
+    const hideUnlock = () => {
+      if (!idhaUnlock) return;
+      idhaUnlock.hidden = true;
+      idhaUnlock.classList.remove("is-visible");
+    };
+
+    const showUnlock = () => {
+      if (!idhaUnlock) return;
+      idhaUnlock.hidden = false;
+      idhaUnlock.classList.add("is-visible");
+    };
+
+    const removeGestureListeners = () => {
+      window.removeEventListener("pointerdown", onFirstGesture, true);
+      window.removeEventListener("touchstart", onFirstGesture, true);
+      window.removeEventListener("click", onFirstGesture, true);
+    };
+
+    const playFromGesture = () => {
+      idhaAudio.muted = false;
+      idhaAudio.volume = 1;
+      try {
+        if (idhaAudio.readyState >= 1 && idhaAudio.currentTime > 0.05) {
+          idhaAudio.currentTime = 0;
+        }
+      } catch (_) {
+        /* ignore seek errors before metadata */
       }
+
+      const playPromise = idhaAudio.play();
+      if (playPromise && typeof playPromise.then === "function") {
+        return playPromise
+          .then(() => {
+            unlocked = true;
+            hideUnlock();
+            setPlaying(true);
+            removeGestureListeners();
+            return true;
+          })
+          .catch(() => {
+            unlocked = false;
+            setPlaying(false);
+            showUnlock();
+            return false;
+          });
+      }
+
+      unlocked = !idhaAudio.paused;
+      if (unlocked) {
+        hideUnlock();
+        setPlaying(true);
+        removeGestureListeners();
+      } else {
+        showUnlock();
+      }
+      return Promise.resolve(unlocked);
+    };
+
+    const onFirstGesture = (event) => {
+      if (unlocked) return;
+      const target = event.target;
+      if (target && target.closest && target.closest("a[href='/invite/'], a[href=\"/invite/\"]")) {
+        return;
+      }
+      // Keep this sync with the gesture — do not await before play()
+      playFromGesture();
+    };
+
+    idhaPlay.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      if (!idhaAudio.paused && unlocked) {
+        idhaAudio.pause();
+        setPlaying(false);
+        return;
+      }
+      playFromGesture();
     });
+
+    if (idhaUnlock) {
+      const unlockHandler = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        playFromGesture();
+      };
+      idhaUnlock.addEventListener("pointerdown", unlockHandler);
+      idhaUnlock.addEventListener("click", unlockHandler);
+    }
+
+    idhaAudio.addEventListener("playing", () => {
+      unlocked = true;
+      hideUnlock();
+      setPlaying(true);
+      removeGestureListeners();
+    });
+    idhaAudio.addEventListener("ended", () => setPlaying(false));
+    idhaAudio.addEventListener("pause", () => {
+      if (!idhaAudio.ended) setPlaying(false);
+    });
+
+    showUnlock();
+    window.addEventListener("pointerdown", onFirstGesture, true);
+    window.addEventListener("touchstart", onFirstGesture, { capture: true, passive: true });
+    window.addEventListener("click", onFirstGesture, true);
+
+    // Best-effort unmuted autoplay (usually blocked; unlock stays until a tap)
+    const tryAutoplay = () => {
+      if (unlocked || !idhaAudio.paused) return;
+      const p = idhaAudio.play();
+      if (p && typeof p.then === "function") {
+        p.then(() => {
+          unlocked = true;
+          hideUnlock();
+          setPlaying(true);
+          removeGestureListeners();
+        }).catch(() => {
+          showUnlock();
+        });
+      }
+    };
+    if (idhaAudio.readyState >= 2) tryAutoplay();
+    else idhaAudio.addEventListener("canplaythrough", tryAutoplay, { once: true });
   }
 })();

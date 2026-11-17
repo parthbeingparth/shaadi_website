@@ -14,12 +14,17 @@ test.describe("The P Story royal redesign", () => {
     await page.goto("/");
     await page.waitForLoadState("networkidle");
     await expect(page.getByRole("heading", { name: /Special Invite from Our Little Idha/i })).toBeVisible();
-    await expect(page.getByRole("button", { name: /^Play$/i })).toHaveCount(0);
     await expect(page.locator("#idha-audio")).toHaveCount(1);
-    await expect(page.getByRole("link", { name: /Go to Invite/i })).toHaveAttribute("href", "/invite/");
+    await expect(page.locator("#idha-unlock")).toBeVisible();
+    await expect(page.getByText("Save the Date")).toBeVisible();
+    await expect(page.getByText("12 December 2026")).toBeVisible();
+    await expect(page.getByRole("link", { name: /^Go to Invite$/i })).toHaveAttribute("href", "/invite/");
     await shot(page, "00-landing");
 
-    await page.getByRole("link", { name: /Go to Invite/i }).click();
+    // Browsers block unmuted autoplay — dismiss tap-to-hear, then continue
+    await page.locator("#idha-unlock").click();
+    await expect(page.locator("#idha-unlock")).toBeHidden();
+    await page.getByRole("link", { name: /^Go to Invite$/i }).click();
     await page.waitForURL(/\/invite\/?$/);
     await expect(page.locator(".invite-frame")).toBeVisible();
   });
@@ -32,7 +37,7 @@ test.describe("The P Story royal redesign", () => {
     await expect(page.locator(".invite-frame")).toBeVisible();
     await expect(page.locator(".hero__names")).toContainText("Parth");
     await expect(page.locator(".hero__names")).toContainText("Prerna");
-    await expect(page.locator(".hero__place")).toContainText("Jabalpur, Madhya Pradesh");
+    await expect(page.locator(".hero__programme-link")).toHaveAttribute("href", "#events");
     await expect(page.locator(".wisteria-canopy").first()).toBeVisible();
     await shot(page, "01-hero");
 
@@ -93,7 +98,7 @@ test.describe("The P Story royal redesign", () => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto("/");
     await page.waitForLoadState("networkidle");
-    await expect(page.locator("#idha-audio")).toHaveCount(1);
+    await expect(page.locator("#idha-play")).toBeVisible();
     await shot(page, "09-mobile-landing");
 
     await page.goto("/invite/");

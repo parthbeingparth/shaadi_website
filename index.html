@@ -6,7 +6,7 @@
     <title>A Special Invite from Idha | The P Story</title>
     <meta
       name="description"
-      content="Play a special invitation from little Idha, then open Parth &amp; Prerna’s wedding invitation."
+      content="Play a special invitation from little Idha, then open Prerna &amp; Parth’s wedding invitation."
     />
     <link rel="canonical" href="https://thepstory.netlify.app/" />
     <meta name="theme-color" content="#FFF9EF" />
@@ -45,51 +45,62 @@
     </header>
 
     <main class="landing">
-      <section class="landing__card paper-panel royal-frame" aria-label="Special invite from Idha">
-        <div class="wisteria-canopy" aria-hidden="true">
+      <section class="landing__card" aria-label="Special invite from Idha">
+        <button class="landing__unlock is-visible" type="button" id="idha-unlock" aria-label="Tap to hear Idha">
+          <span class="landing__unlock-eyebrow">A little voice</span>
+          <span class="landing__unlock-title">Tap to hear Idha</span>
+        </button>
+
+        <div class="landing__canopy" aria-hidden="true">
           <picture>
             <source srcset="images/ornaments/wisteria-canopy.webp" type="image/webp" />
             <img
-              class="wisteria-canopy__img"
               src="images/ornaments/wisteria-canopy.png"
               alt=""
               width="1200"
-              height="459"
+              height="420"
             />
           </picture>
         </div>
 
-        <h1 class="landing__title">A Special Invite from Our Little Idha</h1>
+        <div class="landing__body">
+          <h1 class="landing__title">A Special Invite from Our Little Idha</h1>
 
-        <div class="landing__player">
-          <audio id="idha-audio" preload="auto" autoplay playsinline controls>
-            <source src="assets/audio/idha-invite.m4a" type="audio/mp4" />
-          </audio>
+          <div class="landing__player">
+            <button class="landing__play" type="button" id="idha-play" aria-label="Play Idha’s message">
+              Play Message
+            </button>
+            <audio
+              id="idha-audio"
+              src="/assets/audio/idha-invite.m4a"
+              preload="auto"
+              playsinline
+              webkit-playsinline
+            ></audio>
+          </div>
+
+          <figure class="landing__portrait">
+            <picture>
+              <source srcset="images/idha-couple-kids.webp" type="image/webp" />
+              <img
+                src="images/idha-couple-kids.jpg"
+                alt="Prerna and Parth as children in wedding attire"
+                width="692"
+                height="1024"
+                loading="eager"
+              />
+            </picture>
+          </figure>
+
+          <img class="ornamental-divider" src="images/ornaments/divider.svg" alt="" />
+
+          <section class="landing__cta" aria-label="Open wedding invitation">
+            <p class="landing__save-date">Save the Date</p>
+            <p class="landing__date">12 December 2026</p>
+            <p class="landing__tagline">Two hearts, one forever</p>
+            <a class="wedding-button wedding-button--primary" href="/invite/">Go to Invite</a>
+          </section>
         </div>
-
-        <figure class="landing__portrait">
-          <picture>
-            <source srcset="images/idha-couple-kids.webp" type="image/webp" />
-            <img
-              src="images/idha-couple-kids.jpg"
-              alt="Parth and Prerna as children in wedding attire"
-              width="692"
-              height="1024"
-              loading="eager"
-            />
-          </picture>
-        </figure>
-
-        <img class="ornamental-divider" src="images/ornaments/divider.svg" alt="" />
-
-        <section class="landing__cta" aria-label="Open wedding invitation">
-          <p class="section-eyebrow">When you’re ready</p>
-          <h2 class="landing__cta-title">Go to Invite</h2>
-          <p class="landing__cta-copy">
-            Open Parth &amp; Prerna’s wedding invitation
-          </p>
-          <a class="wedding-button wedding-button--primary" href="/invite/">Go to Invite</a>
-        </section>
       </section>
     </main>
 
