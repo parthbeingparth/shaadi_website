@@ -24,6 +24,7 @@ window.weddingConfig = {
     name: "Hotel Surya Resort",
     address:
       "Siluwa Chowk, Rani Durgawati Samadhi Road, Near Smart Town, Siluwa, Jabalpur, Madhya Pradesh 483001",
+    addressShort: "Siluwa Chowk, Near Smart Town, Jabalpur",
     mapUrl: "https://share.google/VxfPMRZiVxKg5nNvW",
     label: "Hotel Surya Resort, Jabalpur",
   },

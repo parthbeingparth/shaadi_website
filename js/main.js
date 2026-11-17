@@ -42,7 +42,8 @@
     cfg.venue?.label ||
     cfg.venue?.name ||
     "Venue details to follow";
-  const venueAddress = cfg.venue?.address || "";
+  const venueAddress =
+    cfg.venue?.addressShort || cfg.venue?.address || "";
   const venueMapUrl = cfg.venue?.mapUrl || "";
 
   document.querySelectorAll("[data-venue-label]").forEach((el) => {

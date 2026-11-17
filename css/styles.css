@@ -1386,40 +1386,222 @@ a {
   transform: translateY(0);
 }
 
-@media (max-width: 480px) {
+@media (max-width: 760px) {
+  .page-landing .landing {
+    padding: calc(var(--nav-h) + 0.55rem) 0.7rem 1.5rem;
+  }
+
+  .landing__card {
+    width: min(100%, 420px);
+    padding: 3.6rem 1rem 1.35rem;
+  }
+
+  .landing__title {
+    font-size: clamp(1.28rem, 5.6vw, 1.55rem);
+    margin-bottom: 0.7rem;
+    letter-spacing: 0.02em;
+  }
+
+  .landing__player {
+    margin-bottom: 0.75rem;
+    padding: 0.55rem 0.65rem;
+    max-width: 100%;
+  }
+
+  .landing__portrait {
+    width: min(46vw, 190px);
+    max-width: 190px;
+    margin: 0.15rem auto 0.7rem;
+  }
+
+  .landing__card > .ornamental-divider {
+    margin: 0.1rem auto 0.55rem;
+  }
+
+  .landing__cta-title {
+    font-size: 1.35rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .landing__cta-copy {
+    margin: 0 auto 0.85rem;
+    font-size: 1rem;
+  }
+
+  .landing__cta .wedding-button {
+    width: 100%;
+    max-width: 18rem;
+    padding: 0.95rem 1.2rem;
+  }
+
+  .hero {
+    padding: calc(var(--nav-h) + 0.35rem) 0.65rem 1rem;
+    min-height: auto;
+  }
+
   .invite-frame {
+    width: 100%;
     height: auto;
     max-height: none;
-    min-height: calc(100svh - var(--nav-h) - 2.5rem);
+    min-height: 0;
+    grid-template-rows: auto auto;
   }
 
   .invite-frame__copy {
-    padding-top: 4.1rem;
-    padding-bottom: 0.35rem;
+    padding: 3.35rem 0.95rem 0.75rem;
   }
 
-  .hero__names {
-    font-size: clamp(2.45rem, 12vw, 3.2rem);
+  .wisteria-canopy {
+    height: 118px;
+  }
+
+  .hero__invocations {
+    font-size: 0.52rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.4rem;
+  }
+
+  .hero__sacred {
+    font-size: 0.62rem;
+    margin-bottom: 0.45rem;
+  }
+
+  .hero__brand {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+  }
+
+  .ornamental-divider {
+    margin: 0.45rem auto;
+  }
+
+  .hero__blessing-line {
+    font-size: 1.02rem;
+    margin-bottom: 0.45rem;
   }
 
   .hero__invite {
+    font-size: 1.05rem;
+    line-height: 1.45;
+    max-width: 100%;
+  }
+
+  .hero__names {
+    font-size: clamp(2.55rem, 13vw, 3.2rem);
+    margin: 0.4rem 0 0.25rem;
+  }
+
+  .hero__parents {
+    font-size: 0.58rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.55rem;
+  }
+
+  .hero__dates {
+    font-size: 0.92rem;
+    letter-spacing: 0.1em;
+  }
+
+  .hero__place {
     font-size: 1.02rem;
   }
 
+  .hero__venue {
+    font-size: 0.88rem;
+  }
+
+  .hero__venue-address {
+    font-size: 0.9rem;
+    max-width: 18rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.55rem;
+  }
+
+  .hero__actions .wedding-button {
+    width: 100%;
+    text-align: center;
+    padding: 0.95rem 1rem;
+  }
+
   .invite-frame__art img {
-    min-height: 230px;
+    min-height: 210px;
+    max-height: 280px;
   }
 
   .door-frame {
-    height: min(78svh, 620px);
+    width: min(94vw, 420px);
+    height: min(72svh, 560px);
   }
 
-  .door-frame__fan {
-    height: 40px;
+  .events {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .day-panel {
+    padding: 1.1rem 0.9rem;
+  }
+
+  .event-card__name {
+    font-size: 1.28rem;
+  }
+
+  .event-card__desc {
+    font-size: 1.05rem;
   }
 
   .event-card__arch {
     border-radius: 28% 28% 6px 6px / 10% 10% 6px 6px;
+    padding: 0.9rem 0.8rem 1rem;
+  }
+
+  .countdown__unit {
+    min-width: 4.1rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .landing__card {
+    padding: 3.25rem 0.85rem 1.15rem;
+  }
+
+  .landing__title {
+    font-size: 1.15rem;
+  }
+
+  .landing__portrait {
+    width: min(48vw, 150px);
+    max-width: 150px;
+    margin-bottom: 0.45rem;
+  }
+
+  .landing__cta-copy {
+    margin-bottom: 0.65rem;
+  }
+
+  .hero__invocations {
+    font-size: 0.48rem;
+  }
+
+  .hero__blessing-line,
+  .hero__invite {
+    font-size: 0.98rem;
+  }
+
+  .hero__parents {
+    color: var(--royal-purple);
+    opacity: 0.85;
+  }
+
+  .hero__map {
+    font-size: 0.62rem;
+    padding: 0.35rem 0;
   }
 }
 
