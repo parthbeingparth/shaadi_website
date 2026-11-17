@@ -1105,27 +1105,41 @@ a {
 .landing__card {
   position: relative;
   width: min(100%, 560px);
-  padding: clamp(4.5rem, 12vw, 5.5rem) clamp(1.25rem, 3vw, 2rem) clamp(1.75rem, 4vw, 2.5rem);
+  padding: clamp(4.25rem, 11vw, 5.25rem) clamp(1.25rem, 3vw, 2rem) clamp(1.75rem, 4vw, 2.5rem);
   text-align: center;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background:
     radial-gradient(ellipse at 50% 8%, rgba(227, 212, 239, 0.3), transparent 45%),
     var(--paper);
 }
 
+.landing__card > * {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.landing__card .wisteria-canopy {
+  z-index: 0;
+  width: auto;
+}
+
 .landing__title {
-  margin: 0 0 1rem;
+  margin: 0 0 0.85rem;
   font-family: var(--font-display);
-  font-size: clamp(1.55rem, 4.5vw, 2.15rem);
+  font-size: clamp(1.45rem, 4.2vw, 2rem);
   color: var(--deep-purple);
   line-height: 1.25;
 }
 
 .landing__player {
-  margin: 0.85rem auto 1rem;
+  margin: 0 auto 1rem;
   max-width: 22rem;
   width: 100%;
-  padding: 0.85rem 1rem;
+  padding: 0.75rem 0.9rem;
   border: 1px solid rgba(188, 152, 93, 0.35);
   background: rgba(255, 251, 240, 0.85);
 }
@@ -1136,12 +1150,14 @@ a {
 }
 
 .landing__portrait {
-  margin: 0.5rem auto 1rem;
-  width: min(72%, 280px);
-  aspect-ratio: 3 / 4;
+  display: block;
+  margin: 0.25rem auto 1rem;
+  width: min(58vw, 240px);
+  max-width: 240px;
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
   overflow: hidden;
-  border: 2px solid rgba(188, 152, 93, 0.7);
+  border: 2px solid rgba(188, 152, 93, 0.75);
   box-shadow:
     0 0 0 6px rgba(255, 249, 239, 0.95),
     0 0 0 7px rgba(188, 152, 93, 0.35),
@@ -1149,16 +1165,28 @@ a {
   background: var(--warm-cream);
 }
 
+.landing__portrait picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .landing__portrait img {
   width: 100%;
   height: 100%;
+  max-width: none;
   object-fit: cover;
-  object-position: center 18%;
+  object-position: center 12%;
+}
+
+.landing__card > .ornamental-divider {
+  width: min(220px, 70%);
+  margin: 0.15rem auto 0.85rem;
 }
 
 .landing__cta {
-  margin-top: 0.35rem;
-  padding-top: 0.25rem;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .landing__cta-title {
