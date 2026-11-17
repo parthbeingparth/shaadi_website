@@ -16,7 +16,7 @@
   <body class="page-rsvp">
     <div class="ambient" aria-hidden="true"><div class="petal-drift" id="petal-drift"></div></div>
     <header class="site-nav is-scrolled" id="site-nav">
-      <a class="site-nav__brand" href="index.html">
+      <a class="site-nav__brand" href="/">
         <img src="images/ornaments/feather.svg" alt="" width="18" height="36" />
         <span>The P Story</span>
       </a>
@@ -24,10 +24,10 @@
         <span></span><span></span><span></span>
       </button>
       <nav class="site-nav__links" id="primary-nav" aria-label="Primary">
-        <a href="index.html#invitation">Invitation</a>
-        <a href="index.html#events">Celebrations</a>
-        <a href="greeting.html">Greeting</a>
-        <a href="rsvp.html" class="site-nav__rsvp" aria-current="page">RSVP</a>
+        <a href="/invite/#invitation">Invitation</a>
+        <a href="/invite/#events">Celebrations</a>
+        <a href="/greeting.html">Greeting</a>
+        <a href="/rsvp.html" class="site-nav__rsvp" aria-current="page">RSVP</a>
       </nav>
     </header>
 
@@ -43,6 +43,12 @@
         <h1 class="rsvp__title">Will You Join Our Celebration?</h1>
         <p class="rsvp__lead">Parth &amp; Prerna · 11 &amp; 12 December 2026</p>
         <p class="rsvp__note">Your presence will make our special days even more memorable.</p>
+        <p class="rsvp__contacts">
+          R.S.V.P — Smt. Rajni Abrol &amp; Sh. Anoop Verma<br />
+          <a href="tel:+919419205046">94192 05046</a>
+          ·
+          <a href="tel:+919419148895">94191 48895</a>
+        </p>
 
         <form class="rsvp-form" name="rsvp" method="POST" action="/rsvp-success.html" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="rsvp" />
@@ -82,11 +88,14 @@
             <input class="field__input" type="text" name="plus_one_name" />
           </label>
           <fieldset class="field">
-            <legend class="field__label">Which days will you join?</legend>
+            <legend class="field__label">Which celebrations will you join?</legend>
             <div class="choice-col">
-              <label class="choice"><input type="checkbox" name="events" value="11 December" /> 11 December</label>
-              <label class="choice"><input type="checkbox" name="events" value="12 December" /> 12 December</label>
-              <label class="choice"><input type="checkbox" name="events" value="Both days" /> Both days</label>
+              <label class="choice"><input type="checkbox" name="events" value="5 Dec Satsang — Jammu" /> 5 Dec · Satsang (Jammu)</label>
+              <label class="choice"><input type="checkbox" name="events" value="6 Dec Dinner — Jammu" /> 6 Dec · Dinner (Jammu)</label>
+              <label class="choice"><input type="checkbox" name="events" value="11 Dec Haldi — Jabalpur" /> 11 Dec · Haldi (Jabalpur)</label>
+              <label class="choice"><input type="checkbox" name="events" value="11 Dec Sangeet & Mehandi — Jabalpur" /> 11 Dec · Sangeet &amp; Mehandi</label>
+              <label class="choice"><input type="checkbox" name="events" value="12 Dec Saant — Jabalpur" /> 12 Dec · Saant (Jabalpur)</label>
+              <label class="choice"><input type="checkbox" name="events" value="12 Dec Reception of Barat — Jabalpur" /> 12 Dec · Reception of Barat</label>
             </div>
           </fieldset>
           <div class="field-row">

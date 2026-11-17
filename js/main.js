@@ -74,35 +74,41 @@
   /* Events from config */
   const eventsRoot = document.getElementById("events-root");
   if (eventsRoot && Array.isArray(cfg.events)) {
-    const days = [
-      { day: 1, title: "Day One — Friday, 11 December 2026" },
-      { day: 2, title: "Day Two — Saturday, 12 December 2026" },
-    ];
+    const days =
+      Array.isArray(cfg.programmeDays) && cfg.programmeDays.length
+        ? cfg.programmeDays
+        : [
+            { id: "day-1", label: "The Celebrations", title: "Day One" },
+            { id: "day-2", label: "The Celebrations", title: "Day Two" },
+          ];
     eventsRoot.innerHTML = days
-      .map((d) => {
-        const items = cfg.events.filter((e) => e.day === d.day);
+      .map((d, index) => {
+        const items = cfg.events.filter((e) =>
+          d.id ? e.dayId === d.id : e.day === d.day
+        );
+        if (!items.length) return "";
         const cards = items
-          .map(
-            (e) => `
+          .map((e) => {
+            const eventVenue = e.venueLabel || venueLine;
+            const eventMap = e.mapUrl || (e.venueLabel ? null : venueMapUrl);
+            return `
           <article class="event-card event-card--${e.accent || "champagne"} reveal-on-scroll">
             <div class="event-card__arch">
               <p class="event-card__time">${e.timeLabel}</p>
               <h4 class="event-card__name">${e.name}</h4>
-              <p class="event-card__desc">${e.description}</p>
-              <p class="event-card__venue">${
-                e.venueLabel || venueLine
-              }${
-                venueMapUrl
-                  ? `<br /><a class="event-card__map" href="${venueMapUrl}" target="_blank" rel="noopener noreferrer">View on map</a>`
+              <p class="event-card__desc">${e.description || ""}</p>
+              <p class="event-card__venue">${eventVenue}${
+                eventMap
+                  ? `<br /><a class="event-card__map" href="${eventMap}" target="_blank" rel="noopener noreferrer">View on map</a>`
                   : ""
               }</p>
             </div>
-          </article>`
-          )
+          </article>`;
+          })
           .join("");
         return `
-          <div class="day-panel day-panel--${d.day} reveal-on-scroll">
-            <p class="day-panel__label">The Celebrations</p>
+          <div class="day-panel day-panel--${index + 1} reveal-on-scroll">
+            <p class="day-panel__label">${d.label || "The Celebrations"}</p>
             <h3 class="day-panel__title">${d.title}</h3>
             <div class="event-timeline">${cards}</div>
           </div>`;
@@ -219,6 +225,27 @@
     });
     audio.addEventListener("ended", () => {
       playBtn.textContent = "Tap to Hear My Message";
+    });
+  }
+
+  /* Landing — Idha invite autoplay */
+  const idhaAudio = document.getElementById("idha-audio");
+  if (idhaAudio) {
+    const tryPlay = () => idhaAudio.play().catch(() => false);
+
+    const unlockOnGesture = () => {
+      tryPlay();
+      window.removeEventListener("pointerdown", unlockOnGesture);
+      window.removeEventListener("touchstart", unlockOnGesture);
+      window.removeEventListener("keydown", unlockOnGesture);
+    };
+
+    tryPlay().then((started) => {
+      if (started === false || idhaAudio.paused) {
+        window.addEventListener("pointerdown", unlockOnGesture, { once: true });
+        window.addEventListener("touchstart", unlockOnGesture, { once: true });
+        window.addEventListener("keydown", unlockOnGesture, { once: true });
+      }
     });
   }
 })();

@@ -10,8 +10,22 @@ async function shot(page: import("@playwright/test").Page, name: string) {
 }
 
 test.describe("The P Story royal redesign", () => {
-  test("home: hero, doors, events, blessing, countdown", async ({ page }) => {
+  test("landing: Idha audio invite then go to invite", async ({ page }) => {
     await page.goto("/");
+    await page.waitForLoadState("networkidle");
+    await expect(page.getByRole("heading", { name: /Special Invite from Our Little Idha/i })).toBeVisible();
+    await expect(page.getByRole("button", { name: /^Play$/i })).toHaveCount(0);
+    await expect(page.locator("#idha-audio")).toHaveCount(1);
+    await expect(page.getByRole("link", { name: /Go to Invite/i })).toHaveAttribute("href", "/invite/");
+    await shot(page, "00-landing");
+
+    await page.getByRole("link", { name: /Go to Invite/i }).click();
+    await page.waitForURL(/\/invite\/?$/);
+    await expect(page.locator(".invite-frame")).toBeVisible();
+  });
+
+  test("invite: hero, doors, events, blessing, countdown", async ({ page }) => {
+    await page.goto("/invite/");
     await page.waitForLoadState("networkidle");
 
     await expect(page.locator(".top-garland")).toHaveCount(0);
@@ -38,16 +52,18 @@ test.describe("The P Story royal redesign", () => {
 
     await page.locator("#events").scrollIntoViewIfNeeded();
     await page.waitForTimeout(400);
-    await expect(page.getByText("Lagoon")).toBeVisible();
-    await expect(page.getByText("Surya Resort").first()).toBeVisible();
-    await expect(page.getByText("Phoolon Ki Haldi")).toBeVisible();
-    await expect(page.getByText("Sangeet")).toBeVisible();
-    await expect(page.getByText("Baraat & Vivah")).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Satsang" })).toHaveCount(1);
+    await expect(page.getByRole("heading", { name: "Haldi" })).toHaveCount(1);
+    await expect(page.getByRole("heading", { name: "Sangeet & Mehandi" })).toHaveCount(1);
+    await expect(page.getByRole("heading", { name: "Saant" })).toHaveCount(1);
+    await expect(page.getByRole("heading", { name: "Reception of Barat" })).toHaveCount(1);
+    await expect(page.getByRole("heading", { name: "Dinner" })).toHaveCount(1);
+    await expect(page.getByText(/Surya Resort/).first()).toBeVisible();
     await shot(page, "04-events");
 
     await page.locator("#blessing").scrollIntoViewIfNeeded();
     await page.waitForTimeout(300);
-    await expect(page.getByText("Blessings for a Beautiful Beginning")).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Blessings for a Beautiful Beginning" })).toBeVisible();
     await shot(page, "05-blessing");
 
     await page.locator("#countdown-section").scrollIntoViewIfNeeded();
@@ -73,12 +89,17 @@ test.describe("The P Story royal redesign", () => {
     await shot(page, "08-greeting");
   });
 
-  test("mobile hero", async ({ page }) => {
+  test("mobile landing + invite hero", async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto("/");
     await page.waitForLoadState("networkidle");
+    await expect(page.locator("#idha-audio")).toHaveCount(1);
+    await shot(page, "09-mobile-landing");
+
+    await page.goto("/invite/");
+    await page.waitForLoadState("networkidle");
     await expect(page.locator(".invite-frame")).toBeVisible();
     await expect(page.locator(".hero__names")).toBeVisible();
-    await shot(page, "09-mobile-hero");
+    await shot(page, "10-mobile-hero");
   });
 });

@@ -8,10 +8,13 @@ Live: [thepstory.netlify.app](https://thepstory.netlify.app)
 
 | URL | Purpose |
 |-----|---------|
-| `/` | Invitation, doors, celebrations, blessing, countdown |
+| `/` | Landing — play Idha’s special invite audio, then continue |
+| `/invite/` | Full invitation (doors, celebrations, blessing, countdown) |
 | `/rsvp.html` | Netlify Forms RSVP |
 | `/rsvp-success.html` | Thank-you after RSVP |
 | `/greeting.html` | Childhood audio greeting + print QR |
+
+Landing audio file: `assets/audio/idha-invite.m4a`
 
 ## Update wedding details
 
@@ -20,8 +23,9 @@ Edit [`js/wedding-config.js`](js/wedding-config.js):
 - Couple names, brand, location
 - Countdown ISO datetime
 - Venue (`name`, `address`, `mapUrl`, or keep `label: "Venue details to follow"`)
-- Event list (Lagoon, Phoolon Ki Haldi, Sangeet, Haldi, Baraat & Vivah)
-- Venue defaults to Surya Resort, Siluwa, Jabalpur for all celebrations
+- Programme: Jammu (5–6 Dec) + Jabalpur (11–12 Dec)
+- Jabalpur venue: Hotel Surya Resort
+- RSVP contacts: Smt. Rajni Abrol & Sh. Anoop Verma
 
 ## Add childhood greeting audio
 
