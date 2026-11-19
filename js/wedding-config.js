@@ -54,12 +54,12 @@ window.weddingConfig = {
     },
     {
       id: "jabalpur-1",
-      label: "Jabalpur, Madhya Pradesh",
+      label: "Jabalpur",
       title: "Friday, 11 December 2026",
     },
     {
       id: "jabalpur-2",
-      label: "Jabalpur, Madhya Pradesh",
+      label: "Jabalpur",
       title: "Saturday, 12 December 2026",
     },
   ],
@@ -83,7 +83,7 @@ window.weddingConfig = {
       timeLabel: "7:00 PM onwards",
       description: "An evening of warmth, celebration and togetherness in Jammu.",
       venueLabel: "Vilagio, Akhnoor Road, Jammu",
-      mapUrl: null,
+      mapUrl: "https://maps.app.goo.gl/Nsy9Zp3tuPLsbo5z8?g_st=ic",
       accent: "festive",
     },
     {

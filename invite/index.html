@@ -51,97 +51,80 @@
     </header>
 
     <main id="top">
-      <!-- HERO -->
-      <section class="hero" aria-label="Wedding invitation">
-        <div class="invite-frame paper-panel royal-frame">
-          <div class="wisteria-canopy" aria-hidden="true">
-            <picture>
-              <source srcset="../images/ornaments/wisteria-canopy.webp" type="image/webp" />
-              <img
-                class="wisteria-canopy__img"
-                src="../images/ornaments/wisteria-canopy.png"
-                alt=""
-                width="1200"
-                height="459"
-                fetchpriority="high"
-              />
-            </picture>
-            <span class="vine vine-a"></span>
-            <span class="vine vine-b"></span>
-            <span class="vine vine-c"></span>
-            <span class="vine vine-d"></span>
-            <span class="vine vine-e"></span>
-            <span class="vine vine-f"></span>
-            <span class="vine vine-g"></span>
-            <span class="vine vine-h"></span>
+      <!-- DOORS — auto-open to invitation -->
+      <section class="door-scene door-scene--auto" id="invitation" aria-label="Royal invitation reveal">
+        <div class="door-scene__sticky">
+          <div class="door-frame palace-arch">
+            <div class="door-frame__fan" aria-hidden="true"></div>
+            <div class="doors" data-doors>
+              <div class="door door--left" data-door-left>
+                <div class="door__panel">
+                  <div class="door__carving" aria-hidden="true">
+                    <span class="door__tile"></span>
+                    <span class="door__tile"></span>
+                    <span class="door__tile"></span>
+                    <span class="door__tile"></span>
+                    <span class="door__medallion"></span>
+                  </div>
+                  <div class="door__knob door__knob--right"></div>
+                </div>
+              </div>
+              <div class="door door--right" data-door-right>
+                <div class="door__panel">
+                  <div class="door__carving" aria-hidden="true">
+                    <span class="door__tile"></span>
+                    <span class="door__tile"></span>
+                    <span class="door__tile"></span>
+                    <span class="door__tile"></span>
+                    <span class="door__medallion"></span>
+                  </div>
+                  <div class="door__knob door__knob--left"></div>
+                </div>
+              </div>
+            </div>
+            <div class="door-reveal door-reveal--invite" data-door-reveal>
+              <div class="door-reveal__glow" aria-hidden="true"></div>
+              <div class="door-reveal__inner">
+                <p class="hero__invocations">Jai Mata Mal · Jai Baba Kaliveer · Jai Baba Tarmain</p>
+                <p class="hero__sacred">
+                  <span class="gold-line"></span>
+                  ॥ ॐ श्री गणेशाय नमः ॥
+                  <span class="gold-line"></span>
+                </p>
+                <p class="hero__brand">The P Story</p>
+                <img class="ornamental-divider" src="../images/ornaments/divider.svg" alt="" />
+                <p class="hero__blessing-line">
+                  With the blessings of grandparents<br />
+                  <strong>Smt. Pushpa Rani &amp; Late Sh. Hira Lal</strong>
+                </p>
+                <p class="hero__invite">
+                  <strong>Smt. Arpna Arora &amp; Sh. Sunit Kumar Verma</strong><br />
+                  request your gracious presence on the<br />
+                  auspicious occasion of the marriage of their daughter
+                </p>
+                <h1 class="hero__names">Prerna <span class="amp">&amp;</span> Parth</h1>
+                <p class="hero__invite hero__invite--parents">
+                  S/O<br />
+                  <strong>Smt. Shruti Verma &amp; Sh. Dhirendra Verma</strong>
+                </p>
+                <a class="hero__programme-link" href="#events">View the Programme</a>
+              </div>
+            </div>
           </div>
+        </div>
+      </section>
 
-          <div class="invite-frame__copy">
-            <p class="hero__invocations">Jai Mata Mal · Jai Baba Kaliveer · Jai Baba Tarmain</p>
-            <p class="hero__sacred">
-              <span class="gold-line"></span>
-              ॥ ॐ श्री गणेशाय नमः ॥
-              <span class="gold-line"></span>
-            </p>
-            <p class="hero__brand">The P Story</p>
-            <img class="ornamental-divider" src="../images/ornaments/divider.svg" alt="" />
-            <p class="hero__blessing-line">
-              With the blessings of grandparents<br />
-              <strong>Smt. Pushpa Rani &amp; Late Sh. Hira Lal</strong>
-            </p>
-            <p class="hero__invite">
-              <strong>Smt. Arpna Arora &amp; Sh. Sunit Kumar Verma</strong><br />
-              request your gracious presence on the<br />
-              auspicious occasion of the marriage of their daughter
-            </p>
-            <h1 class="hero__names">Prerna <span class="amp">&amp;</span> Parth</h1>
-            <p class="hero__invite hero__invite--parents">
-              S/O<br />
-              <strong>Smt. Shruti Verma &amp; Sh. Dhirendra Verma</strong>
-            </p>
-            <a class="hero__programme-link" href="#events">View the Programme</a>
-          </div>
-
+      <!-- PEACOCKS -->
+      <section class="invite-art" aria-label="Invitation artwork">
+        <div class="invite-frame invite-frame--art-only paper-panel royal-frame">
           <div class="invite-frame__art">
             <img
               src="../images/invite-peacocks.jpg"
               alt="Peacocks flanking a floral jharokha"
               width="864"
               height="669"
-              fetchpriority="high"
+              loading="lazy"
             />
-          </div>
-        </div>
-        <p class="hero__scroll" aria-hidden="true">Discover Our Story</p>
-      </section>
-
-      <!-- DOORS -->
-      <section class="door-scene" id="invitation" aria-label="Royal invitation reveal">
-        <div class="door-scene__sticky">
-          <div class="door-frame palace-arch door-frame--photo">
-            <div class="doors" data-doors>
-              <div class="door door--left" data-door-left>
-                <div class="door__panel door__panel--photo door__panel--left" aria-hidden="true"></div>
-              </div>
-              <div class="door door--right" data-door-right>
-                <div class="door__panel door__panel--photo door__panel--right" aria-hidden="true"></div>
-              </div>
-            </div>
-            <div class="door-reveal" data-door-reveal>
-              <div class="door-reveal__glow" aria-hidden="true"></div>
-              <div class="door-reveal__inner paper-panel">
-                <p class="section-eyebrow">With the blessings of grandparents<br />Smt. Pushpa Rani &amp; Late Sh. Hira Lal</p>
-                <h2 class="door-reveal__title">You Are Invited</h2>
-                <p class="door-reveal__text">
-                  Smt. Arpna Arora &amp; Sh. Sunit Kumar Verma
-                  request your gracious presence as their daughter
-                  Prerna begins a beautiful new chapter with Parth.
-                </p>
-                <p class="door-reveal__names">Prerna &amp; Parth</p>
-                <p class="door-reveal__close">Join us as two families become one.</p>
-                <a class="wedding-button wedding-button--primary" href="#events">Explore the Celebrations</a>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -159,7 +142,7 @@
           <p class="section-eyebrow">The Wedding Programme</p>
           <h2 class="section-title">Celebrations in Jammu &amp; Jabalpur</h2>
           <p class="section-lead">
-            From satsang in Jammu to haldi, sangeet and the reception of barat in Jabalpur —
+            From satsang and get together in Jammu to haldi, sangeet and the reception of barat in Jabalpur —
             join us for love, laughter and togetherness.
           </p>
           <img class="ornamental-divider" src="../images/ornaments/divider.svg" alt="" />
@@ -187,11 +170,8 @@
           </div>
           <p class="section-eyebrow">With Divine Blessings</p>
           <h2 class="section-title">Blessings for a Beautiful Beginning</h2>
-          <p class="blessing__body">
-            With the blessings of grandparents Smt. Pushpa Rani &amp; Late Sh. Hira Lal,
-            and the love of our families, we begin a journey of togetherness, faith and endless love.
-          </p>
           <p class="blessing__close">Your presence and blessings would mean the world to us.</p>
+          <a class="wedding-button wedding-button--primary blessing__rsvp" href="../rsvp.html">RSVP</a>
         </div>
       </section>
 
@@ -210,22 +190,6 @@
         <a class="wedding-button wedding-button--primary" href="../rsvp.html">Send Your RSVP</a>
       </section>
     </main>
-
-    <footer class="site-footer">
-      <img class="ornamental-divider" src="../images/ornaments/divider.svg" alt="" />
-      <p class="site-footer__brand">The P Story</p>
-      <p class="site-footer__names">Prerna &amp; Parth</p>
-      <p class="site-footer__dates">5–6 &amp; 11–12 December 2026</p>
-      <p class="site-footer__place" data-venue-label>Hotel Surya Resort, Jabalpur</p>
-      <p class="site-footer__love">With Love &amp; Warm Regards</p>
-      <p class="site-footer__links">
-        <a href="#invitation">Invitation</a>
-        <a href="#events">Celebrations</a>
-        <a href="../greeting.html">Greeting</a>
-        <a href="../rsvp.html">RSVP</a>
-      </p>
-      <p class="site-footer__note">Made with love for our favourite people.</p>
-    </footer>
 
     <form name="rsvp" netlify netlify-honeypot="bot-field" hidden>
       <input name="bot-field" />

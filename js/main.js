@@ -122,29 +122,44 @@
   const doorLeft = document.querySelector("[data-door-left]");
   const doorRight = document.querySelector("[data-door-right]");
   const reveal = document.querySelector("[data-door-reveal]");
+  const autoDoors = scene && scene.classList.contains("door-scene--auto");
 
-  const updateDoors = () => {
-    if (!scene || !doorLeft || !doorRight || !reveal) return;
-    if (reducedMotion) {
-      doorLeft.style.transform = "rotateY(-80deg)";
-      doorRight.style.transform = "rotateY(80deg)";
-      reveal.style.opacity = "1";
-      reveal.style.transform = "scale(1)";
-      return;
-    }
-    const total = scene.offsetHeight - window.innerHeight;
-    const scrolled = Math.min(Math.max(-scene.getBoundingClientRect().top, 0), total);
-    const progress = total > 0 ? scrolled / total : 1;
+  const openDoors = (progress = 1) => {
+    if (!doorLeft || !doorRight || !reveal) return;
     const angle = progress * 80;
     doorLeft.style.transform = `rotateY(${-angle}deg)`;
     doorRight.style.transform = `rotateY(${angle}deg)`;
-    const rp = Math.max(0, (progress - 0.1) / 0.55);
+    const rp = Math.max(0, (progress - 0.08) / 0.55);
     reveal.style.opacity = String(Math.min(rp, 1));
     reveal.style.transform = `scale(${0.97 + Math.min(rp, 1) * 0.03})`;
+    if (progress >= 1) scene?.classList.add("is-open");
   };
-  updateDoors();
-  window.addEventListener("scroll", updateDoors, { passive: true });
-  window.addEventListener("resize", updateDoors);
+
+  if (scene && doorLeft && doorRight && reveal) {
+    if (reducedMotion || autoDoors) {
+      if (reducedMotion) {
+        openDoors(1);
+      } else {
+        openDoors(0);
+        window.requestAnimationFrame(() => {
+          window.setTimeout(() => {
+            scene.classList.add("is-animating");
+            openDoors(1);
+          }, 350);
+        });
+      }
+    } else {
+      const updateDoors = () => {
+        const total = scene.offsetHeight - window.innerHeight;
+        const scrolled = Math.min(Math.max(-scene.getBoundingClientRect().top, 0), total);
+        const progress = total > 0 ? scrolled / total : 1;
+        openDoors(progress);
+      };
+      updateDoors();
+      window.addEventListener("scroll", updateDoors, { passive: true });
+      window.addEventListener("resize", updateDoors);
+    }
+  }
 
   /* Reveals */
   const revealEls = document.querySelectorAll(".reveal-on-scroll");
@@ -253,7 +268,7 @@
 
     const setPlaying = (playing) => {
       idhaPlay.classList.toggle("is-playing", playing);
-      idhaPlay.textContent = playing ? "Playing…" : "Play Message";
+      idhaPlay.textContent = playing ? "Playing…" : "Hear Idha";
     };
 
     const hideUnlock = () => {
